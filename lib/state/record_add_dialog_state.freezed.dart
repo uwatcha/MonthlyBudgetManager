@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$RecordAddDialogState implements DiagnosticableTreeMixin {
-  bool get isModeExpenditure;
+  bool get isExpenditureMode;
 
   /// Create a copy of RecordAddDialogState
   /// with the given fields replaced by the non-null parameter values.
@@ -29,7 +29,7 @@ mixin _$RecordAddDialogState implements DiagnosticableTreeMixin {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     properties
       ..add(DiagnosticsProperty('type', 'RecordAddDialogState'))
-      ..add(DiagnosticsProperty('isModeExpenditure', isModeExpenditure));
+      ..add(DiagnosticsProperty('isExpenditureMode', isExpenditureMode));
   }
 
   @override
@@ -37,16 +37,16 @@ mixin _$RecordAddDialogState implements DiagnosticableTreeMixin {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is RecordAddDialogState &&
-            (identical(other.isModeExpenditure, isModeExpenditure) ||
-                other.isModeExpenditure == isModeExpenditure));
+            (identical(other.isExpenditureMode, isExpenditureMode) ||
+                other.isExpenditureMode == isExpenditureMode));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isModeExpenditure);
+  int get hashCode => Object.hash(runtimeType, isExpenditureMode);
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'RecordAddDialogState(isModeExpenditure: $isModeExpenditure)';
+    return 'RecordAddDialogState(isExpenditureMode: $isExpenditureMode)';
   }
 }
 
@@ -56,7 +56,7 @@ abstract mixin class $RecordAddDialogStateCopyWith<$Res> {
           $Res Function(RecordAddDialogState) _then) =
       _$RecordAddDialogStateCopyWithImpl;
   @useResult
-  $Res call({bool isModeExpenditure});
+  $Res call({bool isExpenditureMode});
 }
 
 /// @nodoc
@@ -72,12 +72,12 @@ class _$RecordAddDialogStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isModeExpenditure = null,
+    Object? isExpenditureMode = null,
   }) {
     return _then(_self.copyWith(
-      isModeExpenditure: null == isModeExpenditure
-          ? _self.isModeExpenditure
-          : isModeExpenditure // ignore: cast_nullable_to_non_nullable
+      isExpenditureMode: null == isExpenditureMode
+          ? _self.isExpenditureMode
+          : isExpenditureMode // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -88,11 +88,11 @@ class _$RecordAddDialogStateCopyWithImpl<$Res>
 class _RecordAddDialogState
     with DiagnosticableTreeMixin
     implements RecordAddDialogState {
-  const _RecordAddDialogState({this.isModeExpenditure = true});
+  const _RecordAddDialogState({this.isExpenditureMode = true});
 
   @override
   @JsonKey()
-  final bool isModeExpenditure;
+  final bool isExpenditureMode;
 
   /// Create a copy of RecordAddDialogState
   /// with the given fields replaced by the non-null parameter values.
@@ -107,7 +107,7 @@ class _RecordAddDialogState
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     properties
       ..add(DiagnosticsProperty('type', 'RecordAddDialogState'))
-      ..add(DiagnosticsProperty('isModeExpenditure', isModeExpenditure));
+      ..add(DiagnosticsProperty('isExpenditureMode', isExpenditureMode));
   }
 
   @override
@@ -115,16 +115,16 @@ class _RecordAddDialogState
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _RecordAddDialogState &&
-            (identical(other.isModeExpenditure, isModeExpenditure) ||
-                other.isModeExpenditure == isModeExpenditure));
+            (identical(other.isExpenditureMode, isExpenditureMode) ||
+                other.isExpenditureMode == isExpenditureMode));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isModeExpenditure);
+  int get hashCode => Object.hash(runtimeType, isExpenditureMode);
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'RecordAddDialogState(isModeExpenditure: $isModeExpenditure)';
+    return 'RecordAddDialogState(isExpenditureMode: $isExpenditureMode)';
   }
 }
 
@@ -136,7 +136,7 @@ abstract mixin class _$RecordAddDialogStateCopyWith<$Res>
       __$RecordAddDialogStateCopyWithImpl;
   @override
   @useResult
-  $Res call({bool isModeExpenditure});
+  $Res call({bool isExpenditureMode});
 }
 
 /// @nodoc
@@ -152,12 +152,12 @@ class __$RecordAddDialogStateCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? isModeExpenditure = null,
+    Object? isExpenditureMode = null,
   }) {
     return _then(_RecordAddDialogState(
-      isModeExpenditure: null == isModeExpenditure
-          ? _self.isModeExpenditure
-          : isModeExpenditure // ignore: cast_nullable_to_non_nullable
+      isExpenditureMode: null == isExpenditureMode
+          ? _self.isExpenditureMode
+          : isExpenditureMode // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }

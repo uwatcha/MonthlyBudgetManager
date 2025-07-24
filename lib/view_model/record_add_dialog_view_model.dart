@@ -11,7 +11,7 @@ class RecordAddDialogViewModel extends _$RecordAddDialogViewModel {
     return RecordAddDialogState();
   }
 
-  void setIsModeExpenditure(bool isModeExpenditure) {
-    state = state.copyWith(isModeExpenditure: isModeExpenditure);
+  void setIsExpenditureMode(bool isModeExpenditure) {
+    state = state.copyWith(isExpenditureMode: isModeExpenditure);
   }
 }

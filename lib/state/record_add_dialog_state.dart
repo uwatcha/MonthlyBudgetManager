@@ -7,6 +7,6 @@ part 'record_add_dialog_state.freezed.dart';
 @freezed
 abstract class RecordAddDialogState with _$RecordAddDialogState {
   const factory RecordAddDialogState({
-    @Default(true) bool isModeExpenditure,
+    @Default(true) bool isExpenditureMode,
   }) = _RecordAddDialogState;
 }

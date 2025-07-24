@@ -7,7 +7,7 @@ part of 'record_add_dialog_view_model.dart';
 // **************************************************************************
 
 String _$recordAddDialogViewModelHash() =>
-    r'c1633f50976c8c7625873b974a8c38999734b204';
+    r'88dd8e8270aaf3b969f70ef8b1fbece46de6fd2e';
 
 /// See also [RecordAddDialogViewModel].
 @ProviderFor(RecordAddDialogViewModel)
