@@ -1,11 +1,12 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class RecordAddPanel extends StatelessWidget {
+class RecordAddPanel extends ConsumerWidget {
   const RecordAddPanel({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final Size size = MediaQuery.of(context).size;
     return Dialog(
       child: SizedBox(

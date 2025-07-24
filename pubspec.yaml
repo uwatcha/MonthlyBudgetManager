@@ -36,6 +36,12 @@ dependencies:
   cupertino_icons: ^1.0.8
   fl_chart: ^0.71.0
   material_segmented_control: ^5.0.1
+  riverpod: ^2.6.1
+  flutter_riverpod: ^2.6.1
+  riverpod_annotation: ^2.6.1
+  freezed: 3.0.6
+  freezed_annotation: 3.0.0
+  build_runner: ^2.4.15
 
 dev_dependencies:
   flutter_test:
