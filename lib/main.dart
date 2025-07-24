@@ -1,6 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:monthly_budget_manager/view/record_add_panel.dart';
 
 void main() {
   runApp(MyApp());
@@ -29,14 +30,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,9 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Card(
                 color: Colors.green[100],
                 child: Column(
-                  children: [
-              
-                  ],
+                  children: [],
                 ),
               ),
             ),
@@ -91,8 +82,14 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
+        onPressed: () {
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return const RecordAddPanel();
+            },
+          );
+        },
         child: Icon(Icons.add),
       ),
     );
