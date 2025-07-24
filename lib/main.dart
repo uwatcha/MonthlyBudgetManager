@@ -1,40 +1,37 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:monthly_budget_manager/view/record_add_panel.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:monthly_budget_manager/view/record_add_dialog.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    const ProviderScope(child: MonthlyBudgetManager()));
 }
 
-class MyApp extends StatelessWidget {
+class MonthlyBudgetManager extends StatelessWidget {
+  const MonthlyBudgetManager({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: '生活費管理',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: '生活費管理'),
+    theme: ThemeData(
+      primarySwatch: Colors.blue,
+    ),
+    home: HomePage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text('生活費管理'),
       ),
       body: Center(
         child: Column(
@@ -86,7 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
           showDialog(
             context: context,
             builder: (BuildContext context) {
-              return const RecordAddPanel();
+              return const RecordAddDialog();
             },
           );
         },

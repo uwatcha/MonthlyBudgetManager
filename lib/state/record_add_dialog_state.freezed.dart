@@ -4,7 +4,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'record_add_panel_state.dart';
+part of 'record_add_dialog_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,21 +14,21 @@ part of 'record_add_panel_state.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$RecordAddPanelState implements DiagnosticableTreeMixin {
+mixin _$RecordAddDialogState implements DiagnosticableTreeMixin {
   bool get isModeExpenditure;
 
-  /// Create a copy of RecordAddPanelState
+  /// Create a copy of RecordAddDialogState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $RecordAddPanelStateCopyWith<RecordAddPanelState> get copyWith =>
-      _$RecordAddPanelStateCopyWithImpl<RecordAddPanelState>(
-          this as RecordAddPanelState, _$identity);
+  $RecordAddDialogStateCopyWith<RecordAddDialogState> get copyWith =>
+      _$RecordAddDialogStateCopyWithImpl<RecordAddDialogState>(
+          this as RecordAddDialogState, _$identity);
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     properties
-      ..add(DiagnosticsProperty('type', 'RecordAddPanelState'))
+      ..add(DiagnosticsProperty('type', 'RecordAddDialogState'))
       ..add(DiagnosticsProperty('isModeExpenditure', isModeExpenditure));
   }
 
@@ -36,7 +36,7 @@ mixin _$RecordAddPanelState implements DiagnosticableTreeMixin {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is RecordAddPanelState &&
+            other is RecordAddDialogState &&
             (identical(other.isModeExpenditure, isModeExpenditure) ||
                 other.isModeExpenditure == isModeExpenditure));
   }
@@ -46,28 +46,28 @@ mixin _$RecordAddPanelState implements DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'RecordAddPanelState(isModeExpenditure: $isModeExpenditure)';
+    return 'RecordAddDialogState(isModeExpenditure: $isModeExpenditure)';
   }
 }
 
 /// @nodoc
-abstract mixin class $RecordAddPanelStateCopyWith<$Res> {
-  factory $RecordAddPanelStateCopyWith(
-          RecordAddPanelState value, $Res Function(RecordAddPanelState) _then) =
-      _$RecordAddPanelStateCopyWithImpl;
+abstract mixin class $RecordAddDialogStateCopyWith<$Res> {
+  factory $RecordAddDialogStateCopyWith(RecordAddDialogState value,
+          $Res Function(RecordAddDialogState) _then) =
+      _$RecordAddDialogStateCopyWithImpl;
   @useResult
   $Res call({bool isModeExpenditure});
 }
 
 /// @nodoc
-class _$RecordAddPanelStateCopyWithImpl<$Res>
-    implements $RecordAddPanelStateCopyWith<$Res> {
-  _$RecordAddPanelStateCopyWithImpl(this._self, this._then);
+class _$RecordAddDialogStateCopyWithImpl<$Res>
+    implements $RecordAddDialogStateCopyWith<$Res> {
+  _$RecordAddDialogStateCopyWithImpl(this._self, this._then);
 
-  final RecordAddPanelState _self;
-  final $Res Function(RecordAddPanelState) _then;
+  final RecordAddDialogState _self;
+  final $Res Function(RecordAddDialogState) _then;
 
-  /// Create a copy of RecordAddPanelState
+  /// Create a copy of RecordAddDialogState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -85,28 +85,28 @@ class _$RecordAddPanelStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _RecordAddPanelState
+class _RecordAddDialogState
     with DiagnosticableTreeMixin
-    implements RecordAddPanelState {
-  const _RecordAddPanelState({this.isModeExpenditure = true});
+    implements RecordAddDialogState {
+  const _RecordAddDialogState({this.isModeExpenditure = true});
 
   @override
   @JsonKey()
   final bool isModeExpenditure;
 
-  /// Create a copy of RecordAddPanelState
+  /// Create a copy of RecordAddDialogState
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$RecordAddPanelStateCopyWith<_RecordAddPanelState> get copyWith =>
-      __$RecordAddPanelStateCopyWithImpl<_RecordAddPanelState>(
+  _$RecordAddDialogStateCopyWith<_RecordAddDialogState> get copyWith =>
+      __$RecordAddDialogStateCopyWithImpl<_RecordAddDialogState>(
           this, _$identity);
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     properties
-      ..add(DiagnosticsProperty('type', 'RecordAddPanelState'))
+      ..add(DiagnosticsProperty('type', 'RecordAddDialogState'))
       ..add(DiagnosticsProperty('isModeExpenditure', isModeExpenditure));
   }
 
@@ -114,7 +114,7 @@ class _RecordAddPanelState
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _RecordAddPanelState &&
+            other is _RecordAddDialogState &&
             (identical(other.isModeExpenditure, isModeExpenditure) ||
                 other.isModeExpenditure == isModeExpenditure));
   }
@@ -124,37 +124,37 @@ class _RecordAddPanelState
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'RecordAddPanelState(isModeExpenditure: $isModeExpenditure)';
+    return 'RecordAddDialogState(isModeExpenditure: $isModeExpenditure)';
   }
 }
 
 /// @nodoc
-abstract mixin class _$RecordAddPanelStateCopyWith<$Res>
-    implements $RecordAddPanelStateCopyWith<$Res> {
-  factory _$RecordAddPanelStateCopyWith(_RecordAddPanelState value,
-          $Res Function(_RecordAddPanelState) _then) =
-      __$RecordAddPanelStateCopyWithImpl;
+abstract mixin class _$RecordAddDialogStateCopyWith<$Res>
+    implements $RecordAddDialogStateCopyWith<$Res> {
+  factory _$RecordAddDialogStateCopyWith(_RecordAddDialogState value,
+          $Res Function(_RecordAddDialogState) _then) =
+      __$RecordAddDialogStateCopyWithImpl;
   @override
   @useResult
   $Res call({bool isModeExpenditure});
 }
 
 /// @nodoc
-class __$RecordAddPanelStateCopyWithImpl<$Res>
-    implements _$RecordAddPanelStateCopyWith<$Res> {
-  __$RecordAddPanelStateCopyWithImpl(this._self, this._then);
+class __$RecordAddDialogStateCopyWithImpl<$Res>
+    implements _$RecordAddDialogStateCopyWith<$Res> {
+  __$RecordAddDialogStateCopyWithImpl(this._self, this._then);
 
-  final _RecordAddPanelState _self;
-  final $Res Function(_RecordAddPanelState) _then;
+  final _RecordAddDialogState _self;
+  final $Res Function(_RecordAddDialogState) _then;
 
-  /// Create a copy of RecordAddPanelState
+  /// Create a copy of RecordAddDialogState
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $Res call({
     Object? isModeExpenditure = null,
   }) {
-    return _then(_RecordAddPanelState(
+    return _then(_RecordAddDialogState(
       isModeExpenditure: null == isModeExpenditure
           ? _self.isModeExpenditure
           : isModeExpenditure // ignore: cast_nullable_to_non_nullable

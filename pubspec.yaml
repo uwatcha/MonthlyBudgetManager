@@ -39,13 +39,15 @@ dependencies:
   riverpod: ^2.6.1
   flutter_riverpod: ^2.6.1
   riverpod_annotation: ^2.6.1
-  freezed: 3.0.6
-  freezed_annotation: 3.0.0
-  build_runner: ^2.4.15
+
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  freezed: 3.0.6
+  freezed_annotation: 3.0.0
+  build_runner: ^2.4.15
+  riverpod_generator: ^2.6.5
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
