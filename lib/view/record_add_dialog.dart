@@ -15,6 +15,7 @@ class RecordAddDialog extends ConsumerWidget {
           width: size.width * 0.9,
           height: size.height * 0.5,
           child: Column(
+            spacing: 10,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SegmentedButton<bool>(
@@ -56,6 +57,21 @@ class RecordAddDialog extends ConsumerWidget {
                       keyboardType: TextInputType.number,
                       textAlign: TextAlign.start,
                       decoration: InputDecoration(hintText: '金額'),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    child: TextButton(
+                      onPressed: (){},
+                      style: TextButton.styleFrom(
+                        backgroundColor: Colors.blue,
+                      ),
+                      child: Text('OK', style: TextStyle(color: Colors.black),),
                     ),
                   ),
                 ],
