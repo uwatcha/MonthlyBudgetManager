@@ -61,7 +61,7 @@ class RecordAddDialog extends ConsumerWidget {
                     onPressed: () {
                       // HomePageのState.履歴に情報を追加
                       print(
-                          '項目を追加　内容：${ref.watch(recordAddDialogViewModelProvider).content}，金額：${ref.watch(recordAddDialogViewModelProvider).amount}');
+                          '項目を追加　内容：${ref.watch(recordAddDialogViewModelProvider).record.content}，金額：${ref.watch(recordAddDialogViewModelProvider).record.amount}');
                       Navigator.pop(context);
                     },
                     style: TextButton.styleFrom(

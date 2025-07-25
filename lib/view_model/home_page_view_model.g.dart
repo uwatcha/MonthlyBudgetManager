@@ -1,27 +1,26 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'record_add_dialog_view_model.dart';
+part of 'home_page_view_model.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$recordAddDialogViewModelHash() =>
-    r'794445717fb638eb96918a90dad569904b8f6ac3';
+String _$homePageViewModelHash() => r'f0404473647d6b80a5509ef619eb44ab0d53a92a';
 
-/// See also [RecordAddDialogViewModel].
-@ProviderFor(RecordAddDialogViewModel)
-final recordAddDialogViewModelProvider =
-    NotifierProvider<RecordAddDialogViewModel, RecordAddDialogState>.internal(
-  RecordAddDialogViewModel.new,
-  name: r'recordAddDialogViewModelProvider',
+/// See also [HomePageViewModel].
+@ProviderFor(HomePageViewModel)
+final homePageViewModelProvider =
+    NotifierProvider<HomePageViewModel, HomePageState>.internal(
+  HomePageViewModel.new,
+  name: r'homePageViewModelProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$recordAddDialogViewModelHash,
+      : _$homePageViewModelHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$RecordAddDialogViewModel = Notifier<RecordAddDialogState>;
+typedef _$HomePageViewModel = Notifier<HomePageState>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
