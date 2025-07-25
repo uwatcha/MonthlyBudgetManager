@@ -106,6 +106,7 @@ Widget _recordWidget(WidgetRef ref, RecordModel record) {
               PopupMenuItem(
                 child: TextButton(
                   onPressed: () {
+                    Navigator.of(context).pop();
                     ref
                         .read(homePageViewModelProvider.notifier)
                         .deleteRecord(record.date);

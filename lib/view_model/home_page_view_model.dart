@@ -27,14 +27,16 @@ class HomePageViewModel extends _$HomePageViewModel {
   }
 
   void deleteRecord(DateTime date) {
-    final updatedRecords = state.records
-        .where((record) => !record.date.isAtSameMomentAs(date))
-        .toList();
+    RecordModel deleteRecord =
+        state.records.firstWhere((r) => r.date.isAtSameMomentAs(date));
 
-    state = state.copyWith(records: updatedRecords);
+    final newRecords = [...state.records];
+    newRecords.remove(newRecords.firstWhere((r) => r.date.isAtSameMomentAs(date)));
 
+    state = state.copyWith(records: newRecords);
+    //TODO: ここでエラー．また，popupMenuも閉じない
     debugPrint(
-        '項目を削除 ${state.records.firstWhere((r) => r.date.isAtSameMomentAs(date))}');
+        '項目を削除 $deleteRecord');
     debugPrint('削除後の履歴： ${state.records}');
   }
 }
