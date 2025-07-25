@@ -12,72 +12,96 @@ class RecordAddDialog extends ConsumerWidget {
 
     return Dialog(
       child: SizedBox(
-          width: size.width * 0.9,
-          height: size.height * 0.5,
-          child: Column(
-            spacing: 10,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SegmentedButton<bool>(
-                  onSelectionChanged: (b) {
-                    ref
-                        .watch(recordAddDialogViewModelProvider.notifier)
-                        .setIsExpenditureMode(b.first);
-                  },
-                  segments: [
-                    ButtonSegment(value: true, label: Text('支出')),
-                    ButtonSegment(value: false, label: Text('収入'))
-                  ],
-                  selected: {
-                    ref
-                        .watch(recordAddDialogViewModelProvider)
-                        .isExpenditureMode
-                  }),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(' '),
-                  SizedBox(
-                    width: 100,
-                    child: TextField(
-                      keyboardType: TextInputType.text,
-                      textAlign: TextAlign.start,
-                      decoration: InputDecoration(hintText: '内容'),
+        width: size.width * 0.9,
+        height: size.height * 0.5,
+        child: Column(
+          spacing: 10,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SegmentedButton<bool>(
+              onSelectionChanged: (b) {
+                ref
+                    .read(recordAddDialogViewModelProvider.notifier)
+                    .setIsExpenditureMode(b.first);
+              },
+              segments: [
+                ButtonSegment(value: true, label: Text('支出')),
+                ButtonSegment(value: false, label: Text('収入'))
+              ],
+              selected: {
+                ref.watch(recordAddDialogViewModelProvider).isExpenditureMode
+              },
+            ),
+            dialogTextField(
+              headLabel: ' ',
+              onChanged: (text) {
+                ref
+                    .read(recordAddDialogViewModelProvider.notifier)
+                    .setContent(text);
+              },
+              hintText: '内容',
+            ),
+            dialogTextField(
+              headLabel: '¥',
+              onChanged: (text) {
+                ref
+                    .read(recordAddDialogViewModelProvider.notifier)
+                    .setAmount(text == ' ' ? -1 : int.parse(text));
+              },
+              hintText: '金額',
+              keyboardType: TextInputType.number,
+              inputFormatters: [FilteringTextInputFormatter.digitsOnly]
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  child: TextButton(
+                    onPressed: () {
+                      // HomePageのState.履歴に情報を追加
+                      print(
+                          '項目を追加　内容：${ref.watch(recordAddDialogViewModelProvider).content}，金額：${ref.watch(recordAddDialogViewModelProvider).amount}');
+                      Navigator.pop(context);
+                    },
+                    style: TextButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                    ),
+                    child: Text(
+                      'OK',
+                      style: TextStyle(color: Colors.black),
                     ),
                   ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text('¥'),
-                  SizedBox(
-                    width: 100,
-                    child: TextField(
-                      keyboardType: TextInputType.number,
-                      textAlign: TextAlign.start,
-                      decoration: InputDecoration(hintText: '金額'),
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10),
-                    child: TextButton(
-                      onPressed: (){},
-                      style: TextButton.styleFrom(
-                        backgroundColor: Colors.blue,
-                      ),
-                      child: Text('OK', style: TextStyle(color: Colors.black),),
-                    ),
-                  ),
-                ],
-              )
-            ],
-          )),
+                ),
+              ],
+            )
+          ],
+        ),
+      ),
     );
   }
+}
+
+Widget dialogTextField(
+    {required headLabel,
+    required Function(String) onChanged,
+    required String hintText,
+    TextInputType? keyboardType,
+    List<TextInputFormatter>? inputFormatters}) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      Text(headLabel),
+      SizedBox(
+        width: 100,
+        child: TextField(
+          onChanged: onChanged,
+          keyboardType: keyboardType,
+          textAlign: TextAlign.start,
+          decoration: InputDecoration(hintText: hintText),
+          inputFormatters: inputFormatters,
+        ),
+      ),
+    ],
+  );
 }

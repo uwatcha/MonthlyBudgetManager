@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:monthly_budget_manager/view/record_add_dialog.dart';
+import 'package:monthly_budget_manager/view_model/record_add_dialog_view_model.dart';
 
 void main() {
   runApp(
@@ -24,11 +25,11 @@ class MonthlyBudgetManager extends StatelessWidget {
   }
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends ConsumerWidget {
   const HomePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
         title: Text('生活費管理'),
@@ -82,8 +83,14 @@ class HomePage extends StatelessWidget {
         onPressed: () {
           showDialog(
             context: context,
+            
             builder: (BuildContext context) {
-              return const RecordAddDialog();
+              return PopScope(
+                onPopInvokedWithResult:(didPop, result) {
+                  ref.read(recordAddDialogViewModelProvider.notifier).resetState();
+                },
+                child: const RecordAddDialog()
+              );
             },
           );
         },
