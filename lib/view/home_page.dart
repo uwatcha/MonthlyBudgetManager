@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:monthly_budget_manager/model/record_model.dart';
 import 'package:monthly_budget_manager/view/record_add_dialog.dart';
+import 'package:monthly_budget_manager/view_model/home_page_view_model.dart';
 import 'package:monthly_budget_manager/view_model/record_add_dialog_view_model.dart';
 
 class HomePage extends ConsumerWidget {
@@ -54,7 +55,14 @@ class HomePage extends ConsumerWidget {
                 height: 200,
                 child: Column(
                   children: [
-                    _recordWidget(RecordModel(date: DateTime.now(), content: 'テスト', amount: 1000))
+                    _recordWidget(
+                      ref,
+                      RecordModel(
+                        date: DateTime.now(),
+                        content: 'テスト',
+                        amount: 1000,
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -83,14 +91,47 @@ class HomePage extends ConsumerWidget {
   }
 }
 
-Widget _recordWidget(RecordModel record) {
+Widget _recordWidget(WidgetRef ref, RecordModel record) {
   return Container(
-    decoration: BoxDecoration(border: Border.all()), 
+    decoration: BoxDecoration(border: Border.all()),
     child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        _dateDisplayWidget(record.date)
+        _dateDisplayWidget(record.date),
+        Text(record.content),
+        Text('¥ ${record.amount}'), //TODO: RecordModelに収入か支出かの項目を追加
+        PopupMenuButton(
+          itemBuilder: (BuildContext context) {
+            return [
+              PopupMenuItem(
+                child: TextButton(
+                  onPressed: () {},
+                  child: _popupMenuButtonLabel(icon: Icons.edit, text: '編集'),
+                ),
+              ),
+              PopupMenuItem(
+                child: TextButton(
+                  onPressed: () {
+                    ref
+                        .read(homePageViewModelProvider.notifier)
+                        .deleteRecord(record.date);
+                  },
+                  child: _popupMenuButtonLabel(icon: Icons.delete, text: '削除'),
+                ),
+              ),
+            ];
+          },
+          icon: Icon(Icons.more_vert),
+        ),
       ],
     ),
+  );
+}
+
+Widget _popupMenuButtonLabel({required IconData icon, required text}) {
+  return Row(
+    spacing: 10,
+    children: [Icon(icon), Text(text)],
   );
 }
 
