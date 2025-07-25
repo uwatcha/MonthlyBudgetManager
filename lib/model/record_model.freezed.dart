@@ -15,6 +15,7 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$RecordModel {
+  DateTime get date;
   String get content;
   int get amount;
 
@@ -30,16 +31,17 @@ mixin _$RecordModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is RecordModel &&
+            (identical(other.date, date) || other.date == date) &&
             (identical(other.content, content) || other.content == content) &&
             (identical(other.amount, amount) || other.amount == amount));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, content, amount);
+  int get hashCode => Object.hash(runtimeType, date, content, amount);
 
   @override
   String toString() {
-    return 'RecordModel(content: $content, amount: $amount)';
+    return 'RecordModel(date: $date, content: $content, amount: $amount)';
   }
 }
 
@@ -49,7 +51,7 @@ abstract mixin class $RecordModelCopyWith<$Res> {
           RecordModel value, $Res Function(RecordModel) _then) =
       _$RecordModelCopyWithImpl;
   @useResult
-  $Res call({String content, int amount});
+  $Res call({DateTime date, String content, int amount});
 }
 
 /// @nodoc
@@ -64,10 +66,15 @@ class _$RecordModelCopyWithImpl<$Res> implements $RecordModelCopyWith<$Res> {
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? date = null,
     Object? content = null,
     Object? amount = null,
   }) {
     return _then(_self.copyWith(
+      date: null == date
+          ? _self.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       content: null == content
           ? _self.content
           : content // ignore: cast_nullable_to_non_nullable
@@ -83,8 +90,11 @@ class _$RecordModelCopyWithImpl<$Res> implements $RecordModelCopyWith<$Res> {
 /// @nodoc
 
 class _RecordModel implements RecordModel {
-  const _RecordModel({required this.content, required this.amount});
+  const _RecordModel(
+      {required this.date, required this.content, required this.amount});
 
+  @override
+  final DateTime date;
   @override
   final String content;
   @override
@@ -103,16 +113,17 @@ class _RecordModel implements RecordModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _RecordModel &&
+            (identical(other.date, date) || other.date == date) &&
             (identical(other.content, content) || other.content == content) &&
             (identical(other.amount, amount) || other.amount == amount));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, content, amount);
+  int get hashCode => Object.hash(runtimeType, date, content, amount);
 
   @override
   String toString() {
-    return 'RecordModel(content: $content, amount: $amount)';
+    return 'RecordModel(date: $date, content: $content, amount: $amount)';
   }
 }
 
@@ -124,7 +135,7 @@ abstract mixin class _$RecordModelCopyWith<$Res>
       __$RecordModelCopyWithImpl;
   @override
   @useResult
-  $Res call({String content, int amount});
+  $Res call({DateTime date, String content, int amount});
 }
 
 /// @nodoc
@@ -139,10 +150,15 @@ class __$RecordModelCopyWithImpl<$Res> implements _$RecordModelCopyWith<$Res> {
   @override
   @pragma('vm:prefer-inline')
   $Res call({
+    Object? date = null,
     Object? content = null,
     Object? amount = null,
   }) {
     return _then(_RecordModel(
+      date: null == date
+          ? _self.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       content: null == content
           ? _self.content
           : content // ignore: cast_nullable_to_non_nullable

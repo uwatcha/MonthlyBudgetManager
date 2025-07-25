@@ -14,7 +14,8 @@ class HomePageViewModel extends _$HomePageViewModel {
   }
 
   void addRecord(RecordModel record) {
-    state = state.copyWith(records: [...state.records, record]);
+    var newRecord = record.copyWith(date: DateTime.now());
+    state = state.copyWith(records: [...state.records, newRecord]);
     debugPrint(state.records.toString());
   }
 }

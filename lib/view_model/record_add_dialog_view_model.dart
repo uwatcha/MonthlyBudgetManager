@@ -8,7 +8,7 @@ part 'record_add_dialog_view_model.g.dart';
 @Riverpod(keepAlive: true)
 class RecordAddDialogViewModel extends _$RecordAddDialogViewModel {
   final RecordAddDialogState initialRecordAddDialogState =
-      RecordAddDialogState(record: RecordModel(content: ' ', amount: -1));
+      RecordAddDialogState(record: RecordModel(date: DateTime(-1), content: ' ', amount: -1));
   @override
   RecordAddDialogState build() {
     return initialRecordAddDialogState.copyWith();
@@ -21,13 +21,13 @@ class RecordAddDialogViewModel extends _$RecordAddDialogViewModel {
 
   void setContent(String content) {
     state = state.copyWith(
-        record: RecordModel(content: content, amount: state.record.amount));
+        record: RecordModel(date: state.record.date, content: content, amount: state.record.amount));
     debugPrint(state.toString());
   }
 
   void setAmount(int amount) {
     state = state.copyWith(
-        record: RecordModel(content: state.record.content, amount: amount));
+        record: RecordModel(date: state.record.date, content: state.record.content, amount: amount));
     debugPrint(state.toString());
   }
 
