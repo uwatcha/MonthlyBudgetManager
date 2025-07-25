@@ -16,7 +16,8 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$RecordAddDialogState implements DiagnosticableTreeMixin {
   bool get isExpenditureMode;
-  RecordModel get record;
+  String? get content;
+  int? get amount;
 
   /// Create a copy of RecordAddDialogState
   /// with the given fields replaced by the non-null parameter values.
@@ -31,7 +32,8 @@ mixin _$RecordAddDialogState implements DiagnosticableTreeMixin {
     properties
       ..add(DiagnosticsProperty('type', 'RecordAddDialogState'))
       ..add(DiagnosticsProperty('isExpenditureMode', isExpenditureMode))
-      ..add(DiagnosticsProperty('record', record));
+      ..add(DiagnosticsProperty('content', content))
+      ..add(DiagnosticsProperty('amount', amount));
   }
 
   @override
@@ -41,15 +43,17 @@ mixin _$RecordAddDialogState implements DiagnosticableTreeMixin {
             other is RecordAddDialogState &&
             (identical(other.isExpenditureMode, isExpenditureMode) ||
                 other.isExpenditureMode == isExpenditureMode) &&
-            (identical(other.record, record) || other.record == record));
+            (identical(other.content, content) || other.content == content) &&
+            (identical(other.amount, amount) || other.amount == amount));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isExpenditureMode, record);
+  int get hashCode =>
+      Object.hash(runtimeType, isExpenditureMode, content, amount);
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'RecordAddDialogState(isExpenditureMode: $isExpenditureMode, record: $record)';
+    return 'RecordAddDialogState(isExpenditureMode: $isExpenditureMode, content: $content, amount: $amount)';
   }
 }
 
@@ -59,9 +63,7 @@ abstract mixin class $RecordAddDialogStateCopyWith<$Res> {
           $Res Function(RecordAddDialogState) _then) =
       _$RecordAddDialogStateCopyWithImpl;
   @useResult
-  $Res call({bool isExpenditureMode, RecordModel record});
-
-  $RecordModelCopyWith<$Res> get record;
+  $Res call({bool isExpenditureMode, String? content, int? amount});
 }
 
 /// @nodoc
@@ -78,28 +80,23 @@ class _$RecordAddDialogStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isExpenditureMode = null,
-    Object? record = null,
+    Object? content = freezed,
+    Object? amount = freezed,
   }) {
     return _then(_self.copyWith(
       isExpenditureMode: null == isExpenditureMode
           ? _self.isExpenditureMode
           : isExpenditureMode // ignore: cast_nullable_to_non_nullable
               as bool,
-      record: null == record
-          ? _self.record
-          : record // ignore: cast_nullable_to_non_nullable
-              as RecordModel,
+      content: freezed == content
+          ? _self.content
+          : content // ignore: cast_nullable_to_non_nullable
+              as String?,
+      amount: freezed == amount
+          ? _self.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
-  }
-
-  /// Create a copy of RecordAddDialogState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $RecordModelCopyWith<$Res> get record {
-    return $RecordModelCopyWith<$Res>(_self.record, (value) {
-      return _then(_self.copyWith(record: value));
-    });
   }
 }
 
@@ -109,13 +106,15 @@ class _RecordAddDialogState
     with DiagnosticableTreeMixin
     implements RecordAddDialogState {
   const _RecordAddDialogState(
-      {this.isExpenditureMode = true, required this.record});
+      {this.isExpenditureMode = true, this.content, this.amount});
 
   @override
   @JsonKey()
   final bool isExpenditureMode;
   @override
-  final RecordModel record;
+  final String? content;
+  @override
+  final int? amount;
 
   /// Create a copy of RecordAddDialogState
   /// with the given fields replaced by the non-null parameter values.
@@ -131,7 +130,8 @@ class _RecordAddDialogState
     properties
       ..add(DiagnosticsProperty('type', 'RecordAddDialogState'))
       ..add(DiagnosticsProperty('isExpenditureMode', isExpenditureMode))
-      ..add(DiagnosticsProperty('record', record));
+      ..add(DiagnosticsProperty('content', content))
+      ..add(DiagnosticsProperty('amount', amount));
   }
 
   @override
@@ -141,15 +141,17 @@ class _RecordAddDialogState
             other is _RecordAddDialogState &&
             (identical(other.isExpenditureMode, isExpenditureMode) ||
                 other.isExpenditureMode == isExpenditureMode) &&
-            (identical(other.record, record) || other.record == record));
+            (identical(other.content, content) || other.content == content) &&
+            (identical(other.amount, amount) || other.amount == amount));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isExpenditureMode, record);
+  int get hashCode =>
+      Object.hash(runtimeType, isExpenditureMode, content, amount);
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'RecordAddDialogState(isExpenditureMode: $isExpenditureMode, record: $record)';
+    return 'RecordAddDialogState(isExpenditureMode: $isExpenditureMode, content: $content, amount: $amount)';
   }
 }
 
@@ -161,10 +163,7 @@ abstract mixin class _$RecordAddDialogStateCopyWith<$Res>
       __$RecordAddDialogStateCopyWithImpl;
   @override
   @useResult
-  $Res call({bool isExpenditureMode, RecordModel record});
-
-  @override
-  $RecordModelCopyWith<$Res> get record;
+  $Res call({bool isExpenditureMode, String? content, int? amount});
 }
 
 /// @nodoc
@@ -181,28 +180,23 @@ class __$RecordAddDialogStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   $Res call({
     Object? isExpenditureMode = null,
-    Object? record = null,
+    Object? content = freezed,
+    Object? amount = freezed,
   }) {
     return _then(_RecordAddDialogState(
       isExpenditureMode: null == isExpenditureMode
           ? _self.isExpenditureMode
           : isExpenditureMode // ignore: cast_nullable_to_non_nullable
               as bool,
-      record: null == record
-          ? _self.record
-          : record // ignore: cast_nullable_to_non_nullable
-              as RecordModel,
+      content: freezed == content
+          ? _self.content
+          : content // ignore: cast_nullable_to_non_nullable
+              as String?,
+      amount: freezed == amount
+          ? _self.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
-  }
-
-  /// Create a copy of RecordAddDialogState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $RecordModelCopyWith<$Res> get record {
-    return $RecordModelCopyWith<$Res>(_self.record, (value) {
-      return _then(_self.copyWith(record: value));
-    });
   }
 }
 

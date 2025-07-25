@@ -7,15 +7,21 @@ part 'home_page_view_model.g.dart';
 
 @Riverpod(keepAlive: true)
 class HomePageViewModel extends _$HomePageViewModel {
-  
   @override
   HomePageState build() {
     return HomePageState();
   }
 
-  void addRecord(RecordModel record) {
-    var newRecord = record.copyWith(date: DateTime.now());
-    state = state.copyWith(records: [...state.records, newRecord]);
-    debugPrint(state.records.toString());
+  bool addRecord(String? content, int? amount) {
+    if (content != null && amount != null) {
+      var newRecord = RecordModel(date: DateTime.now(), content: content, amount: amount);
+      state = state.copyWith(records: [...state.records, newRecord]);
+      debugPrint('項目を追加　内容：$content，金額：$amount');
+      debugPrint(state.records.toString());
+      return true;
+    } else {
+      debugPrint('未記入の欄があります。');
+      return false;
+    }
   }
 }

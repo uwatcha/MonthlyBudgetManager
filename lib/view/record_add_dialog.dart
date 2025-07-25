@@ -59,11 +59,16 @@ class RecordAddDialog extends ConsumerWidget {
                   padding: EdgeInsets.symmetric(horizontal: 10),
                   child: TextButton(
                     onPressed: () {
-                      debugPrint(
-                          '項目を追加　内容：${ref.watch(recordAddDialogViewModelProvider).record.content}，金額：${ref.watch(recordAddDialogViewModelProvider).record.amount}');
-                      ref.read(homePageViewModelProvider.notifier).addRecord(
-                          ref.watch(recordAddDialogViewModelProvider).record);
-                      Navigator.pop(context);
+                      bool isSucceeded = ref
+                          .read(homePageViewModelProvider.notifier)
+                          .addRecord(
+                              ref
+                                  .watch(recordAddDialogViewModelProvider)
+                                  .content,
+                              ref
+                                  .watch(recordAddDialogViewModelProvider)
+                                  .amount);
+                      if (isSucceeded) Navigator.pop(context);
                     },
                     style: TextButton.styleFrom(
                       backgroundColor: Colors.blue,
