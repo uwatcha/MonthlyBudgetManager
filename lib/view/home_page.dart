@@ -53,17 +53,11 @@ class HomePage extends ConsumerWidget {
                 color: Colors.green[200]!,
                 width: 1000,
                 height: 200,
-                child: Column(
-                  children: [
-                    _recordWidget(
-                      ref,
-                      RecordModel(
-                        date: DateTime.now(),
-                        content: 'テスト',
-                        amount: 1000,
-                      ),
-                    ),
-                  ],
+                child: ListView.builder(
+                  itemCount: ref.watch(homePageViewModelProvider).records.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return _recordWidget(ref, ref.watch(homePageViewModelProvider).records[index]);
+                  },
                 ),
               ),
             ],
