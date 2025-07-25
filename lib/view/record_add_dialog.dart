@@ -33,7 +33,7 @@ class RecordAddDialog extends ConsumerWidget {
                 ref.watch(recordAddDialogViewModelProvider).isExpenditureMode
               },
             ),
-            dialogTextField(
+            _dialogTextField(
               headLabel: ' ',
               onChanged: (text) {
                 ref
@@ -42,7 +42,7 @@ class RecordAddDialog extends ConsumerWidget {
               },
               hintText: '内容',
             ),
-            dialogTextField(
+            _dialogTextField(
                 headLabel: '¥',
                 onChanged: (text) {
                   ref
@@ -88,7 +88,7 @@ class RecordAddDialog extends ConsumerWidget {
   }
 }
 
-Widget dialogTextField({
+Widget _dialogTextField({
   required headLabel,
   required Function(String) onChanged,
   required String hintText,
