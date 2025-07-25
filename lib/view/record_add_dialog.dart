@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:monthly_budget_manager/view_model/home_page_view_model.dart';
 import 'package:monthly_budget_manager/view_model/record_add_dialog_view_model.dart';
 
 class RecordAddDialog extends ConsumerWidget {
@@ -42,16 +43,15 @@ class RecordAddDialog extends ConsumerWidget {
               hintText: '内容',
             ),
             dialogTextField(
-              headLabel: '¥',
-              onChanged: (text) {
-                ref
-                    .read(recordAddDialogViewModelProvider.notifier)
-                    .setAmount(text == ' ' ? -1 : int.parse(text));
-              },
-              hintText: '金額',
-              keyboardType: TextInputType.number,
-              inputFormatters: [FilteringTextInputFormatter.digitsOnly]
-            ),
+                headLabel: '¥',
+                onChanged: (text) {
+                  ref
+                      .read(recordAddDialogViewModelProvider.notifier)
+                      .setAmount(text == ' ' ? -1 : int.parse(text));
+                },
+                hintText: '金額',
+                keyboardType: TextInputType.number,
+                inputFormatters: [FilteringTextInputFormatter.digitsOnly]),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -59,9 +59,10 @@ class RecordAddDialog extends ConsumerWidget {
                   padding: EdgeInsets.symmetric(horizontal: 10),
                   child: TextButton(
                     onPressed: () {
-                      // HomePageのState.履歴に情報を追加
-                      print(
+                      debugPrint(
                           '項目を追加　内容：${ref.watch(recordAddDialogViewModelProvider).record.content}，金額：${ref.watch(recordAddDialogViewModelProvider).record.amount}');
+                      ref.read(homePageViewModelProvider.notifier).addRecord(
+                          ref.watch(recordAddDialogViewModelProvider).record);
                       Navigator.pop(context);
                     },
                     style: TextButton.styleFrom(
@@ -82,12 +83,13 @@ class RecordAddDialog extends ConsumerWidget {
   }
 }
 
-Widget dialogTextField(
-    {required headLabel,
-    required Function(String) onChanged,
-    required String hintText,
-    TextInputType? keyboardType,
-    List<TextInputFormatter>? inputFormatters}) {
+Widget dialogTextField({
+  required headLabel,
+  required Function(String) onChanged,
+  required String hintText,
+  TextInputType? keyboardType,
+  List<TextInputFormatter>? inputFormatters,
+}) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [

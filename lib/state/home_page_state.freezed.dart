@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$HomePageState implements DiagnosticableTreeMixin {
-  int get tmp;
+  List<RecordModel> get records;
 
   /// Create a copy of HomePageState
   /// with the given fields replaced by the non-null parameter values.
@@ -29,7 +29,7 @@ mixin _$HomePageState implements DiagnosticableTreeMixin {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     properties
       ..add(DiagnosticsProperty('type', 'HomePageState'))
-      ..add(DiagnosticsProperty('tmp', tmp));
+      ..add(DiagnosticsProperty('records', records));
   }
 
   @override
@@ -37,15 +37,16 @@ mixin _$HomePageState implements DiagnosticableTreeMixin {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is HomePageState &&
-            (identical(other.tmp, tmp) || other.tmp == tmp));
+            const DeepCollectionEquality().equals(other.records, records));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, tmp);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(records));
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'HomePageState(tmp: $tmp)';
+    return 'HomePageState(records: $records)';
   }
 }
 
@@ -55,7 +56,7 @@ abstract mixin class $HomePageStateCopyWith<$Res> {
           HomePageState value, $Res Function(HomePageState) _then) =
       _$HomePageStateCopyWithImpl;
   @useResult
-  $Res call({int tmp});
+  $Res call({List<RecordModel> records});
 }
 
 /// @nodoc
@@ -71,13 +72,13 @@ class _$HomePageStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? tmp = null,
+    Object? records = null,
   }) {
     return _then(_self.copyWith(
-      tmp: null == tmp
-          ? _self.tmp
-          : tmp // ignore: cast_nullable_to_non_nullable
-              as int,
+      records: null == records
+          ? _self.records
+          : records // ignore: cast_nullable_to_non_nullable
+              as List<RecordModel>,
     ));
   }
 }
@@ -85,11 +86,17 @@ class _$HomePageStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _HomePageState with DiagnosticableTreeMixin implements HomePageState {
-  const _HomePageState({this.tmp = 0});
+  const _HomePageState({final List<RecordModel> records = const []})
+      : _records = records;
 
+  final List<RecordModel> _records;
   @override
   @JsonKey()
-  final int tmp;
+  List<RecordModel> get records {
+    if (_records is EqualUnmodifiableListView) return _records;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_records);
+  }
 
   /// Create a copy of HomePageState
   /// with the given fields replaced by the non-null parameter values.
@@ -103,7 +110,7 @@ class _HomePageState with DiagnosticableTreeMixin implements HomePageState {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     properties
       ..add(DiagnosticsProperty('type', 'HomePageState'))
-      ..add(DiagnosticsProperty('tmp', tmp));
+      ..add(DiagnosticsProperty('records', records));
   }
 
   @override
@@ -111,15 +118,16 @@ class _HomePageState with DiagnosticableTreeMixin implements HomePageState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _HomePageState &&
-            (identical(other.tmp, tmp) || other.tmp == tmp));
+            const DeepCollectionEquality().equals(other._records, _records));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, tmp);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_records));
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'HomePageState(tmp: $tmp)';
+    return 'HomePageState(records: $records)';
   }
 }
 
@@ -131,7 +139,7 @@ abstract mixin class _$HomePageStateCopyWith<$Res>
       __$HomePageStateCopyWithImpl;
   @override
   @useResult
-  $Res call({int tmp});
+  $Res call({List<RecordModel> records});
 }
 
 /// @nodoc
@@ -147,13 +155,13 @@ class __$HomePageStateCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? tmp = null,
+    Object? records = null,
   }) {
     return _then(_HomePageState(
-      tmp: null == tmp
-          ? _self.tmp
-          : tmp // ignore: cast_nullable_to_non_nullable
-              as int,
+      records: null == records
+          ? _self._records
+          : records // ignore: cast_nullable_to_non_nullable
+              as List<RecordModel>,
     ));
   }
 }
