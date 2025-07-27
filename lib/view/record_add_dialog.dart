@@ -62,12 +62,7 @@ class RecordAddDialog extends ConsumerWidget {
                       bool isSucceeded = ref
                           .read(homePageViewModelProvider.notifier)
                           .addRecord(
-                              ref
-                                  .watch(recordAddDialogViewModelProvider)
-                                  .content,
-                              ref
-                                  .watch(recordAddDialogViewModelProvider)
-                                  .amount);
+                              ref.watch(recordAddDialogViewModelProvider));
                       if (isSucceeded) Navigator.pop(context);
                     },
                     style: TextButton.styleFrom(

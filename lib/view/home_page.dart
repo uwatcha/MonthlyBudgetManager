@@ -37,13 +37,7 @@ class HomePage extends ConsumerWidget {
                   const Text('円'),
                 ],
               ),
-              SizedBox(
-                width: 1000,
-                height: 100,
-                child: LineChart(LineChartData(lineBarsData: [
-                  LineChartBarData(spots: const [FlSpot(1, 0), FlSpot(2, 400)])
-                ])),
-              ),
+              _lineChart(ref),
               const Text('残使用可能額'),
               const Text('${5000}円'),
               const Text('使用済み額'),
@@ -54,9 +48,11 @@ class HomePage extends ConsumerWidget {
                 width: 1000,
                 height: 200,
                 child: ListView.builder(
-                  itemCount: ref.watch(homePageViewModelProvider).records.length,
+                  itemCount:
+                      ref.watch(homePageViewModelProvider).records.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return _recordWidget(ref, ref.watch(homePageViewModelProvider).records[index]);
+                    return _recordWidget(ref,
+                        ref.watch(homePageViewModelProvider).records[index]);
                   },
                 ),
               ),
@@ -85,6 +81,50 @@ class HomePage extends ConsumerWidget {
   }
 }
 
+//TODO: x軸を給料日~次の給料日，y軸を金額（Maxを今月の一番多かった時の金額の1.2倍）のグラフを作る
+//TODO: 実際のグラフとこのペースだと仮定した予測グラフを表示する
+Widget _lineChart(WidgetRef ref) {
+  return Container(
+    padding: EdgeInsets.all(14.0),
+    width: 1000,
+    height: 350,
+    child: LineChart(
+      LineChartData(
+        minX: 1,
+        maxX: 30,
+        minY: 0,
+        maxY: 10000,
+        titlesData: FlTitlesData(
+          bottomTitles: AxisTitles(
+            axisNameWidget: Text('(日)'),
+            sideTitles: SideTitles(
+              getTitlesWidget: (value, meta) {
+                return Text('$value');
+              },
+            )
+          ),
+          leftTitles: AxisTitles(
+            axisNameWidget: Text('円'),
+            sideTitles: SideTitles(
+              getTitlesWidget: (value, meta) {
+                return Text('$value');
+              },
+            )
+          ),
+          rightTitles: AxisTitles(),
+          topTitles: AxisTitles()
+        ),
+        lineBarsData: [
+          LineChartBarData(
+            spots: ref.watch(homePageViewModelProvider).lineChartSpots
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
+/// 履歴表示
 Widget _recordWidget(WidgetRef ref, RecordModel record) {
   return Container(
     decoration: BoxDecoration(border: Border.all()),
@@ -123,6 +163,7 @@ Widget _recordWidget(WidgetRef ref, RecordModel record) {
   );
 }
 
+/// 履歴表示ウィジェットの3点リーダーを押した時に出てくるメニュー内のボタンのラベル
 Widget _popupMenuButtonLabel({required IconData icon, required text}) {
   return Row(
     spacing: 10,
@@ -130,10 +171,11 @@ Widget _popupMenuButtonLabel({required IconData icon, required text}) {
   );
 }
 
+/// 履歴表示ウィジェットの日付部分
 Widget _dateDisplayWidget(DateTime date) {
   return Container(
-    width: 80, // ウィジェット全体の幅を調整
-    height: 80, // ウィジェット全体の高さを調整
+    width: 80, 
+    height: 80,
     color: Colors.blue.withOpacity(0.1), // 領域を確認するための色
     child: Stack(
       children: [

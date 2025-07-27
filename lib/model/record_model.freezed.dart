@@ -17,6 +17,8 @@ T _$identity<T>(T value) => value;
 mixin _$RecordModel {
   DateTime get date;
   String get content;
+
+  /// 収入は正の数，支出は負の数として管理する
   int get amount;
 
   /// Create a copy of RecordModel
@@ -97,6 +99,8 @@ class _RecordModel implements RecordModel {
   final DateTime date;
   @override
   final String content;
+
+  /// 収入は正の数，支出は負の数として管理する
   @override
   final int amount;
 
