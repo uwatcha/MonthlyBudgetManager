@@ -55,6 +55,14 @@ class RecordAddDialog extends ConsumerWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
+                TextButton(
+                  onPressed: () {
+                    HomePageViewModel homePageViewModel =
+                        ref.read(homePageViewModelProvider.notifier);
+                    homePageViewModel.replaceDummyRecords();
+                  },
+                  child: Text('デモデータ追加'),
+                ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 10),
                   child: TextButton(

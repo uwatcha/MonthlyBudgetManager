@@ -83,6 +83,7 @@ class HomePage extends ConsumerWidget {
 
 //TODO: x軸を給料日~次の給料日，y軸を金額（Maxを今月の一番多かった時の金額の1.2倍）のグラフを作る
 //TODO: 実際のグラフとこのペースだと仮定した予測グラフを表示する
+//TODO: 予算がオーバーする = currentMoneyが-になることを想定する
 Widget _lineChart(WidgetRef ref) {
   return Container(
     padding: EdgeInsets.all(14.0),
