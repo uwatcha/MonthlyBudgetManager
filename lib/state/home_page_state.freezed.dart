@@ -18,8 +18,7 @@ mixin _$HomePageState implements DiagnosticableTreeMixin {
   DateTime get startDate;
   DateTime get endDate;
   int get currentMoney;
-  List<RecordModel> get records; // TODO: セーブ機能作ったらrequiredにしてbuild()で情報を取得する
-  List<FlSpot> get lineChartSpots;
+  List<RecordModel> get records;
 
   /// Create a copy of HomePageState
   /// with the given fields replaced by the non-null parameter values.
@@ -36,8 +35,7 @@ mixin _$HomePageState implements DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('startDate', startDate))
       ..add(DiagnosticsProperty('endDate', endDate))
       ..add(DiagnosticsProperty('currentMoney', currentMoney))
-      ..add(DiagnosticsProperty('records', records))
-      ..add(DiagnosticsProperty('lineChartSpots', lineChartSpots));
+      ..add(DiagnosticsProperty('records', records));
   }
 
   @override
@@ -50,23 +48,16 @@ mixin _$HomePageState implements DiagnosticableTreeMixin {
             (identical(other.endDate, endDate) || other.endDate == endDate) &&
             (identical(other.currentMoney, currentMoney) ||
                 other.currentMoney == currentMoney) &&
-            const DeepCollectionEquality().equals(other.records, records) &&
-            const DeepCollectionEquality()
-                .equals(other.lineChartSpots, lineChartSpots));
+            const DeepCollectionEquality().equals(other.records, records));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      startDate,
-      endDate,
-      currentMoney,
-      const DeepCollectionEquality().hash(records),
-      const DeepCollectionEquality().hash(lineChartSpots));
+  int get hashCode => Object.hash(runtimeType, startDate, endDate, currentMoney,
+      const DeepCollectionEquality().hash(records));
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'HomePageState(startDate: $startDate, endDate: $endDate, currentMoney: $currentMoney, records: $records, lineChartSpots: $lineChartSpots)';
+    return 'HomePageState(startDate: $startDate, endDate: $endDate, currentMoney: $currentMoney, records: $records)';
   }
 }
 
@@ -80,8 +71,7 @@ abstract mixin class $HomePageStateCopyWith<$Res> {
       {DateTime startDate,
       DateTime endDate,
       int currentMoney,
-      List<RecordModel> records,
-      List<FlSpot> lineChartSpots});
+      List<RecordModel> records});
 }
 
 /// @nodoc
@@ -101,7 +91,6 @@ class _$HomePageStateCopyWithImpl<$Res>
     Object? endDate = null,
     Object? currentMoney = null,
     Object? records = null,
-    Object? lineChartSpots = null,
   }) {
     return _then(_self.copyWith(
       startDate: null == startDate
@@ -120,10 +109,6 @@ class _$HomePageStateCopyWithImpl<$Res>
           ? _self.records
           : records // ignore: cast_nullable_to_non_nullable
               as List<RecordModel>,
-      lineChartSpots: null == lineChartSpots
-          ? _self.lineChartSpots
-          : lineChartSpots // ignore: cast_nullable_to_non_nullable
-              as List<FlSpot>,
     ));
   }
 }
@@ -135,10 +120,8 @@ class _HomePageState with DiagnosticableTreeMixin implements HomePageState {
       {required this.startDate,
       required this.endDate,
       required this.currentMoney,
-      final List<RecordModel> records = const [],
-      final List<FlSpot> lineChartSpots = const []})
-      : _records = records,
-        _lineChartSpots = lineChartSpots;
+      final List<RecordModel> records = const []})
+      : _records = records;
 
   @override
   final DateTime startDate;
@@ -153,17 +136,6 @@ class _HomePageState with DiagnosticableTreeMixin implements HomePageState {
     if (_records is EqualUnmodifiableListView) return _records;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_records);
-  }
-
-// TODO: セーブ機能作ったらrequiredにしてbuild()で情報を取得する
-  final List<FlSpot> _lineChartSpots;
-// TODO: セーブ機能作ったらrequiredにしてbuild()で情報を取得する
-  @override
-  @JsonKey()
-  List<FlSpot> get lineChartSpots {
-    if (_lineChartSpots is EqualUnmodifiableListView) return _lineChartSpots;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_lineChartSpots);
   }
 
   /// Create a copy of HomePageState
@@ -181,8 +153,7 @@ class _HomePageState with DiagnosticableTreeMixin implements HomePageState {
       ..add(DiagnosticsProperty('startDate', startDate))
       ..add(DiagnosticsProperty('endDate', endDate))
       ..add(DiagnosticsProperty('currentMoney', currentMoney))
-      ..add(DiagnosticsProperty('records', records))
-      ..add(DiagnosticsProperty('lineChartSpots', lineChartSpots));
+      ..add(DiagnosticsProperty('records', records));
   }
 
   @override
@@ -195,23 +166,16 @@ class _HomePageState with DiagnosticableTreeMixin implements HomePageState {
             (identical(other.endDate, endDate) || other.endDate == endDate) &&
             (identical(other.currentMoney, currentMoney) ||
                 other.currentMoney == currentMoney) &&
-            const DeepCollectionEquality().equals(other._records, _records) &&
-            const DeepCollectionEquality()
-                .equals(other._lineChartSpots, _lineChartSpots));
+            const DeepCollectionEquality().equals(other._records, _records));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      startDate,
-      endDate,
-      currentMoney,
-      const DeepCollectionEquality().hash(_records),
-      const DeepCollectionEquality().hash(_lineChartSpots));
+  int get hashCode => Object.hash(runtimeType, startDate, endDate, currentMoney,
+      const DeepCollectionEquality().hash(_records));
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'HomePageState(startDate: $startDate, endDate: $endDate, currentMoney: $currentMoney, records: $records, lineChartSpots: $lineChartSpots)';
+    return 'HomePageState(startDate: $startDate, endDate: $endDate, currentMoney: $currentMoney, records: $records)';
   }
 }
 
@@ -227,8 +191,7 @@ abstract mixin class _$HomePageStateCopyWith<$Res>
       {DateTime startDate,
       DateTime endDate,
       int currentMoney,
-      List<RecordModel> records,
-      List<FlSpot> lineChartSpots});
+      List<RecordModel> records});
 }
 
 /// @nodoc
@@ -248,7 +211,6 @@ class __$HomePageStateCopyWithImpl<$Res>
     Object? endDate = null,
     Object? currentMoney = null,
     Object? records = null,
-    Object? lineChartSpots = null,
   }) {
     return _then(_HomePageState(
       startDate: null == startDate
@@ -267,10 +229,6 @@ class __$HomePageStateCopyWithImpl<$Res>
           ? _self._records
           : records // ignore: cast_nullable_to_non_nullable
               as List<RecordModel>,
-      lineChartSpots: null == lineChartSpots
-          ? _self._lineChartSpots
-          : lineChartSpots // ignore: cast_nullable_to_non_nullable
-              as List<FlSpot>,
     ));
   }
 }

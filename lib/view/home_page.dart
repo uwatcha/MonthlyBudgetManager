@@ -1,9 +1,8 @@
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:monthly_budget_manager/model/record_model.dart';
-import 'package:monthly_budget_manager/state/home_page_state.dart';
+import 'package:monthly_budget_manager/view/money_line_chart.dart';
 import 'package:monthly_budget_manager/view/record_add_dialog.dart';
 import 'package:monthly_budget_manager/view_model/home_page_view_model.dart';
 import 'package:monthly_budget_manager/view_model/record_add_dialog_view_model.dart';
@@ -38,7 +37,7 @@ class HomePage extends ConsumerWidget {
                   const Text('円'),
                 ],
               ),
-              _lineChart(ref),
+              MoneyLineChart(),
               const Text('残使用可能額'),
               const Text('${5000}円'),
               const Text('使用済み額'),
@@ -85,50 +84,6 @@ class HomePage extends ConsumerWidget {
 //TODO: x軸を給料日~次の給料日，y軸を金額（Maxを今月の一番多かった時の金額の1.2倍）のグラフを作る
 //TODO: 実際のグラフとこのペースだと仮定した予測グラフを表示する
 //TODO: 予算がオーバーする = currentMoneyが-になることを想定する
-Widget _lineChart(WidgetRef ref) {
-  return Container(
-    padding: EdgeInsets.all(14.0),
-    width: 1000,
-    height: 350,
-    child: LineChart(
-      LineChartData(
-        minX: 0,
-        maxX: 30,
-        minY: 0,
-        maxY: 10000,
-        titlesData: FlTitlesData(
-          bottomTitles: AxisTitles(
-            axisNameWidget: Text('(日)'),
-            sideTitles: SideTitles(
-              showTitles: true,
-              getTitlesWidget: (value, meta) {
-                HomePageState homePageState = ref.watch(homePageViewModelProvider);
-                int lastDayOfFirstMonth;
-                return Text('${value + homePageState.startDate.day}');
-              },
-            )
-          ),
-          leftTitles: AxisTitles(
-            axisNameWidget: Text('千円'),
-            sideTitles: SideTitles(
-              showTitles: true,
-              getTitlesWidget: (value, meta) {
-                return Text('${(value/1000).toInt()}');
-              },
-            )
-          ),
-          rightTitles: AxisTitles(),
-          topTitles: AxisTitles()
-        ),
-        lineBarsData: [
-          LineChartBarData(
-            spots: ref.watch(homePageViewModelProvider).lineChartSpots
-          ),
-        ],
-      ),
-    ),
-  );
-}
 
 /// 履歴表示
 Widget _recordWidget(WidgetRef ref, RecordModel record) {

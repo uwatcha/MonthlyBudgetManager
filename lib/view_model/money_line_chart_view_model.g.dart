@@ -1,26 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'home_page_view_model.dart';
+part of 'money_line_chart_view_model.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$homePageViewModelHash() => r'a4a250123aee34d88f5eaa03b6b49f5c40ff56f4';
+String _$moneyLineChartViewModelHash() =>
+    r'00e65cd000bbee0d1995be0e45499df43998aa4e';
 
-/// See also [HomePageViewModel].
-@ProviderFor(HomePageViewModel)
-final homePageViewModelProvider =
-    NotifierProvider<HomePageViewModel, HomePageState>.internal(
-  HomePageViewModel.new,
-  name: r'homePageViewModelProvider',
+/// See also [MoneyLineChartViewModel].
+@ProviderFor(MoneyLineChartViewModel)
+final moneyLineChartViewModelProvider =
+    NotifierProvider<MoneyLineChartViewModel, MoneyLineChartState>.internal(
+  MoneyLineChartViewModel.new,
+  name: r'moneyLineChartViewModelProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$homePageViewModelHash,
+      : _$moneyLineChartViewModelHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$HomePageViewModel = Notifier<HomePageState>;
+typedef _$MoneyLineChartViewModel = Notifier<MoneyLineChartState>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
