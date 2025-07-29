@@ -17,7 +17,9 @@ class MoneyLineChartViewModel extends _$MoneyLineChartViewModel {
   }
 
   Widget getLeftTitleWidget(double value, TitleMeta meta) {
-    return Text('tmp');
+    final DateTime startDate = ref.watch(homePageViewModelProvider).startDate;
+    final DateTime currentDate = startDate.add(Duration(days: value.toInt()));
+    return Text('${currentDate.month}/${currentDate.day}');
   }
 
   void updateLineChartSpots() {
