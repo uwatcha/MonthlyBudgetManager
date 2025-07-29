@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:monthly_budget_manager/model/record_model.dart';
+import 'package:monthly_budget_manager/state/home_page_state.dart';
 import 'package:monthly_budget_manager/view/record_add_dialog.dart';
 import 'package:monthly_budget_manager/view_model/home_page_view_model.dart';
 import 'package:monthly_budget_manager/view_model/record_add_dialog_view_model.dart';
@@ -91,7 +92,7 @@ Widget _lineChart(WidgetRef ref) {
     height: 350,
     child: LineChart(
       LineChartData(
-        minX: 1,
+        minX: 0,
         maxX: 30,
         minY: 0,
         maxY: 10000,
@@ -99,16 +100,20 @@ Widget _lineChart(WidgetRef ref) {
           bottomTitles: AxisTitles(
             axisNameWidget: Text('(日)'),
             sideTitles: SideTitles(
+              showTitles: true,
               getTitlesWidget: (value, meta) {
-                return Text('$value');
+                HomePageState homePageState = ref.watch(homePageViewModelProvider);
+                int lastDayOfFirstMonth;
+                return Text('${value + homePageState.startDate.day}');
               },
             )
           ),
           leftTitles: AxisTitles(
-            axisNameWidget: Text('円'),
+            axisNameWidget: Text('千円'),
             sideTitles: SideTitles(
+              showTitles: true,
               getTitlesWidget: (value, meta) {
-                return Text('$value');
+                return Text('${(value/1000).toInt()}');
               },
             )
           ),

@@ -59,7 +59,7 @@ class RecordAddDialog extends ConsumerWidget {
                   onPressed: () {
                     HomePageViewModel homePageViewModel =
                         ref.read(homePageViewModelProvider.notifier);
-                    homePageViewModel.replaceDummyRecords();
+                    homePageViewModel.addDummyRecords();
                   },
                   child: Text('デモデータ追加'),
                 ),

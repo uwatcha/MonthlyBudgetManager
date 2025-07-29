@@ -29,7 +29,10 @@ class HomePageViewModel extends _$HomePageViewModel {
       int sign = isExpenditureMode ? -1 : 1;
       var newRecord = RecordModel(
           date: DateTime.now(), content: content, amount: sign * amount);
-      state = state.copyWith(records: [...state.records, newRecord]);
+      state = state.copyWith(
+        currentMoney: state.currentMoney + amount,
+        records: [...state.records, newRecord],
+      );
       debugPrint('項目を追加　内容：$content，金額：$amount');
       debugPrint(state.records.toString());
       _updateLineChartSpots();
@@ -67,13 +70,14 @@ class HomePageViewModel extends _$HomePageViewModel {
         DateTime date = formatter.parse(e.key);
         double x = date.difference(state.startDate).inDays.toDouble();
         double y = (state.currentMoney + e.value).toDouble();
+        debugPrint('Spot: ($x, $y)');
         return FlSpot(x, y);
       },
     ).toList();
     state = state.copyWith(lineChartSpots: newSpots);
   }
 
-  void replaceDummyRecords() {
+  void addDummyRecords() {
     List<RecordModel> newRecords = [
       RecordModel(date: DateTime(2025, 7, 20), content: 'りんご', amount: -200),
       RecordModel(date: DateTime(2025, 7, 25), content: 'バナナ', amount: -250),
@@ -92,9 +96,15 @@ class HomePageViewModel extends _$HomePageViewModel {
       RecordModel(date: DateTime(2025, 8, 15), content: '交通費', amount: -500),
       RecordModel(date: DateTime(2025, 8, 19), content: 'チョコミントアイス', amount: -110),
     ];
-    state = state.copyWith(records: newRecords);
+    for (var record in newRecords) {
+      int calculatedAmount = state.currentMoney + record.amount;
+      state = state.copyWith(
+        currentMoney: calculatedAmount,
+        records: [...state.records, record],
+      );
+      _updateLineChartSpots();
+    }
     debugPrint('ダミー項目を追加');
     debugPrint(state.records.toString());
-    _updateLineChartSpots();
   }
 }
