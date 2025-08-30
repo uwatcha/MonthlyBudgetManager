@@ -30,8 +30,14 @@ class HomePageViewModel extends _$HomePageViewModel {
       int sign = isExpenditureMode ? -1 : 1;
       var newRecord = RecordModel(
           date: DateTime.now(), content: content, amount: sign * amount);
+
+      // 共通関数でdailyAmountsを更新
+      Map<String, int> newDailyAmounts =
+          _updateDailyAmounts(newRecord, isAdd: true);
+
       state = state.copyWith(
         records: [...state.records, newRecord],
+        dailyAmounts: newDailyAmounts,
       );
       debugPrint('項目を追加　内容：$content，金額：$amount');
       debugPrint(state.records.toString());
@@ -51,7 +57,11 @@ class HomePageViewModel extends _$HomePageViewModel {
     newRecords
         .remove(newRecords.firstWhere((r) => r.date.isAtSameMomentAs(date)));
 
-    state = state.copyWith(records: newRecords);
+    // 共通関数でdailyAmountsを更新
+    Map<String, int> newDailyAmounts =
+        _updateDailyAmounts(deleteRecord, isAdd: false);
+
+    state = state.copyWith(records: newRecords, dailyAmounts: newDailyAmounts);
     debugPrint('項目を削除 $deleteRecord');
     debugPrint('削除後の履歴： ${state.records}');
     ref.read(moneyLineChartViewModelProvider.notifier).updateLineChartSpots();
@@ -78,13 +88,9 @@ class HomePageViewModel extends _$HomePageViewModel {
       RecordModel(
           date: DateTime(2025, 8, 19), content: 'チョコミントアイス', amount: -110),
     ];
-    DateFormat formatter = DateFormat(DATE_FORMAT_PATTERN);
     for (var record in newRecords) {
-      String recordDateString = formatter.format(record.date);
-      debugPrint('dailyAmounts: ${state.dailyAmounts}');
-      Map<String, int> newDailyAmounts = Map<String, int>.from(state.dailyAmounts);
-      newDailyAmounts.update(recordDateString, (value) => value + record.amount,
-          ifAbsent: () => record.amount);
+      Map<String, int> newDailyAmounts =
+          _updateDailyAmounts(record, isAdd: true);
       state = state.copyWith(
         dailyAmounts: newDailyAmounts,
         records: [...state.records, record],
@@ -93,5 +99,32 @@ class HomePageViewModel extends _$HomePageViewModel {
     }
     debugPrint('ダミー項目を追加');
     debugPrint(state.records.toString());
+  }
+
+  Map<String, int> _updateDailyAmounts(RecordModel record,
+      {required bool isAdd}) {
+    DateFormat formatter = DateFormat(DATE_FORMAT_PATTERN);
+    String recordDateString = formatter.format(record.date);
+    Map<String, int> newDailyAmounts =
+        Map<String, int>.from(state.dailyAmounts);
+
+    if (isAdd) {
+      newDailyAmounts.update(
+        recordDateString,
+        (value) => value + record.amount,
+        ifAbsent: () => record.amount,
+      );
+    } else {
+      if (newDailyAmounts.containsKey(recordDateString)) {
+        newDailyAmounts.update(
+          recordDateString,
+          (value) => value - record.amount,
+        );
+        if (newDailyAmounts[recordDateString] == 0) {
+          newDailyAmounts.remove(recordDateString);
+        }
+      }
+    }
+    return newDailyAmounts;
   }
 }
