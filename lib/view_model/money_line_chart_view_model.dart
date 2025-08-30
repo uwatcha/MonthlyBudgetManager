@@ -25,17 +25,14 @@ class MoneyLineChartViewModel extends _$MoneyLineChartViewModel {
   void updateLineChartSpots() {
     HomePageState homePageState = ref.watch(homePageViewModelProvider);
     final DateFormat formatter = DateFormat(DATE_FORMAT_PATTERN);
-    Map<String, int> dailyAmounts = {};
-    for (var record in homePageState.records) {
-      String recordDateString = formatter.format(record.date);
-      dailyAmounts.update(recordDateString, (value) => value + record.amount,
-          ifAbsent: () => record.amount);
-    }
-    List<FlSpot> newSpots = dailyAmounts.entries.map<FlSpot>(
+    double lastSpotY = homePageState.startMoney.toDouble();
+    List<FlSpot> newSpots = homePageState.dailyAmounts.entries.map<FlSpot>(
       (e) {
         DateTime date = formatter.parse(e.key);
         double x = date.difference(homePageState.startDate).inDays.toDouble();
-        double y = (homePageState.currentMoney + e.value).toDouble();
+        double currentY = lastSpotY + e.value;
+        double y = (currentY).toDouble();
+        lastSpotY = currentY;
         debugPrint('Spot: ($x, $y)');
         return FlSpot(x, y);
       },

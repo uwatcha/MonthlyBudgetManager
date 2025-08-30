@@ -17,8 +17,9 @@ T _$identity<T>(T value) => value;
 mixin _$HomePageState implements DiagnosticableTreeMixin {
   DateTime get startDate;
   DateTime get endDate;
-  int get currentMoney;
-  List<RecordModel> get records;
+  int get startMoney;
+  List<RecordModel> get records; // TODO: セーブ機能作ったらrequiredにしてbuild()で情報を取得する
+  Map<String, int> get dailyAmounts;
 
   /// Create a copy of HomePageState
   /// with the given fields replaced by the non-null parameter values.
@@ -34,8 +35,9 @@ mixin _$HomePageState implements DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('type', 'HomePageState'))
       ..add(DiagnosticsProperty('startDate', startDate))
       ..add(DiagnosticsProperty('endDate', endDate))
-      ..add(DiagnosticsProperty('currentMoney', currentMoney))
-      ..add(DiagnosticsProperty('records', records));
+      ..add(DiagnosticsProperty('startMoney', startMoney))
+      ..add(DiagnosticsProperty('records', records))
+      ..add(DiagnosticsProperty('dailyAmounts', dailyAmounts));
   }
 
   @override
@@ -46,18 +48,25 @@ mixin _$HomePageState implements DiagnosticableTreeMixin {
             (identical(other.startDate, startDate) ||
                 other.startDate == startDate) &&
             (identical(other.endDate, endDate) || other.endDate == endDate) &&
-            (identical(other.currentMoney, currentMoney) ||
-                other.currentMoney == currentMoney) &&
-            const DeepCollectionEquality().equals(other.records, records));
+            (identical(other.startMoney, startMoney) ||
+                other.startMoney == startMoney) &&
+            const DeepCollectionEquality().equals(other.records, records) &&
+            const DeepCollectionEquality()
+                .equals(other.dailyAmounts, dailyAmounts));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, startDate, endDate, currentMoney,
-      const DeepCollectionEquality().hash(records));
+  int get hashCode => Object.hash(
+      runtimeType,
+      startDate,
+      endDate,
+      startMoney,
+      const DeepCollectionEquality().hash(records),
+      const DeepCollectionEquality().hash(dailyAmounts));
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'HomePageState(startDate: $startDate, endDate: $endDate, currentMoney: $currentMoney, records: $records)';
+    return 'HomePageState(startDate: $startDate, endDate: $endDate, startMoney: $startMoney, records: $records, dailyAmounts: $dailyAmounts)';
   }
 }
 
@@ -70,8 +79,9 @@ abstract mixin class $HomePageStateCopyWith<$Res> {
   $Res call(
       {DateTime startDate,
       DateTime endDate,
-      int currentMoney,
-      List<RecordModel> records});
+      int startMoney,
+      List<RecordModel> records,
+      Map<String, int> dailyAmounts});
 }
 
 /// @nodoc
@@ -89,8 +99,9 @@ class _$HomePageStateCopyWithImpl<$Res>
   $Res call({
     Object? startDate = null,
     Object? endDate = null,
-    Object? currentMoney = null,
+    Object? startMoney = null,
     Object? records = null,
+    Object? dailyAmounts = null,
   }) {
     return _then(_self.copyWith(
       startDate: null == startDate
@@ -101,14 +112,18 @@ class _$HomePageStateCopyWithImpl<$Res>
           ? _self.endDate
           : endDate // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      currentMoney: null == currentMoney
-          ? _self.currentMoney
-          : currentMoney // ignore: cast_nullable_to_non_nullable
+      startMoney: null == startMoney
+          ? _self.startMoney
+          : startMoney // ignore: cast_nullable_to_non_nullable
               as int,
       records: null == records
           ? _self.records
           : records // ignore: cast_nullable_to_non_nullable
               as List<RecordModel>,
+      dailyAmounts: null == dailyAmounts
+          ? _self.dailyAmounts
+          : dailyAmounts // ignore: cast_nullable_to_non_nullable
+              as Map<String, int>,
     ));
   }
 }
@@ -119,16 +134,18 @@ class _HomePageState with DiagnosticableTreeMixin implements HomePageState {
   const _HomePageState(
       {required this.startDate,
       required this.endDate,
-      required this.currentMoney,
-      final List<RecordModel> records = const []})
-      : _records = records;
+      required this.startMoney,
+      final List<RecordModel> records = const [],
+      final Map<String, int> dailyAmounts = const <String, int>{}})
+      : _records = records,
+        _dailyAmounts = dailyAmounts;
 
   @override
   final DateTime startDate;
   @override
   final DateTime endDate;
   @override
-  final int currentMoney;
+  final int startMoney;
   final List<RecordModel> _records;
   @override
   @JsonKey()
@@ -136,6 +153,17 @@ class _HomePageState with DiagnosticableTreeMixin implements HomePageState {
     if (_records is EqualUnmodifiableListView) return _records;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_records);
+  }
+
+// TODO: セーブ機能作ったらrequiredにしてbuild()で情報を取得する
+  final Map<String, int> _dailyAmounts;
+// TODO: セーブ機能作ったらrequiredにしてbuild()で情報を取得する
+  @override
+  @JsonKey()
+  Map<String, int> get dailyAmounts {
+    if (_dailyAmounts is EqualUnmodifiableMapView) return _dailyAmounts;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_dailyAmounts);
   }
 
   /// Create a copy of HomePageState
@@ -152,8 +180,9 @@ class _HomePageState with DiagnosticableTreeMixin implements HomePageState {
       ..add(DiagnosticsProperty('type', 'HomePageState'))
       ..add(DiagnosticsProperty('startDate', startDate))
       ..add(DiagnosticsProperty('endDate', endDate))
-      ..add(DiagnosticsProperty('currentMoney', currentMoney))
-      ..add(DiagnosticsProperty('records', records));
+      ..add(DiagnosticsProperty('startMoney', startMoney))
+      ..add(DiagnosticsProperty('records', records))
+      ..add(DiagnosticsProperty('dailyAmounts', dailyAmounts));
   }
 
   @override
@@ -164,18 +193,25 @@ class _HomePageState with DiagnosticableTreeMixin implements HomePageState {
             (identical(other.startDate, startDate) ||
                 other.startDate == startDate) &&
             (identical(other.endDate, endDate) || other.endDate == endDate) &&
-            (identical(other.currentMoney, currentMoney) ||
-                other.currentMoney == currentMoney) &&
-            const DeepCollectionEquality().equals(other._records, _records));
+            (identical(other.startMoney, startMoney) ||
+                other.startMoney == startMoney) &&
+            const DeepCollectionEquality().equals(other._records, _records) &&
+            const DeepCollectionEquality()
+                .equals(other._dailyAmounts, _dailyAmounts));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, startDate, endDate, currentMoney,
-      const DeepCollectionEquality().hash(_records));
+  int get hashCode => Object.hash(
+      runtimeType,
+      startDate,
+      endDate,
+      startMoney,
+      const DeepCollectionEquality().hash(_records),
+      const DeepCollectionEquality().hash(_dailyAmounts));
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'HomePageState(startDate: $startDate, endDate: $endDate, currentMoney: $currentMoney, records: $records)';
+    return 'HomePageState(startDate: $startDate, endDate: $endDate, startMoney: $startMoney, records: $records, dailyAmounts: $dailyAmounts)';
   }
 }
 
@@ -190,8 +226,9 @@ abstract mixin class _$HomePageStateCopyWith<$Res>
   $Res call(
       {DateTime startDate,
       DateTime endDate,
-      int currentMoney,
-      List<RecordModel> records});
+      int startMoney,
+      List<RecordModel> records,
+      Map<String, int> dailyAmounts});
 }
 
 /// @nodoc
@@ -209,8 +246,9 @@ class __$HomePageStateCopyWithImpl<$Res>
   $Res call({
     Object? startDate = null,
     Object? endDate = null,
-    Object? currentMoney = null,
+    Object? startMoney = null,
     Object? records = null,
+    Object? dailyAmounts = null,
   }) {
     return _then(_HomePageState(
       startDate: null == startDate
@@ -221,14 +259,18 @@ class __$HomePageStateCopyWithImpl<$Res>
           ? _self.endDate
           : endDate // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      currentMoney: null == currentMoney
-          ? _self.currentMoney
-          : currentMoney // ignore: cast_nullable_to_non_nullable
+      startMoney: null == startMoney
+          ? _self.startMoney
+          : startMoney // ignore: cast_nullable_to_non_nullable
               as int,
       records: null == records
           ? _self._records
           : records // ignore: cast_nullable_to_non_nullable
               as List<RecordModel>,
+      dailyAmounts: null == dailyAmounts
+          ? _self._dailyAmounts
+          : dailyAmounts // ignore: cast_nullable_to_non_nullable
+              as Map<String, int>,
     ));
   }
 }

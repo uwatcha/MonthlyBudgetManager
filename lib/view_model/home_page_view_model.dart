@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:monthly_budget_manager/constant/constant.dart';
 import 'package:monthly_budget_manager/model/record_model.dart';
 import 'package:monthly_budget_manager/state/home_page_state.dart';
 import 'package:monthly_budget_manager/state/record_add_dialog_state.dart';
@@ -12,10 +14,11 @@ class HomePageViewModel extends _$HomePageViewModel {
   @override
   HomePageState build() {
     return HomePageState(
-        //TODO: これらのデータを前の画面で入力してから遷移するようにする
-        startDate: DateTime(2025, 7, 20),
-        endDate: DateTime(2025, 8, 20),
-        currentMoney: 10000);
+      //TODO: これらのデータを前の画面で入力してから遷移するようにする
+      startDate: DateTime(2025, 7, 20),
+      endDate: DateTime(2025, 8, 20),
+      startMoney: 10000,
+    );
   }
 
   bool addRecord(RecordAddDialogState addState) {
@@ -28,7 +31,6 @@ class HomePageViewModel extends _$HomePageViewModel {
       var newRecord = RecordModel(
           date: DateTime.now(), content: content, amount: sign * amount);
       state = state.copyWith(
-        currentMoney: state.currentMoney + amount,
         records: [...state.records, newRecord],
       );
       debugPrint('項目を追加　内容：$content，金額：$amount');
@@ -66,18 +68,25 @@ class HomePageViewModel extends _$HomePageViewModel {
       RecordModel(date: DateTime(2025, 8, 1), content: 'かき氷', amount: -150),
       RecordModel(date: DateTime(2025, 8, 1), content: 'クレープ', amount: -450),
       RecordModel(date: DateTime(2025, 8, 1), content: 'たこ焼き', amount: -500),
-      RecordModel(date: DateTime(2025, 8, 5), content: 'アメリカンドッグ', amount: -140),
+      RecordModel(
+          date: DateTime(2025, 8, 5), content: 'アメリカンドッグ', amount: -140),
       RecordModel(date: DateTime(2025, 8, 10), content: 'ティッシュ', amount: -270),
       RecordModel(date: DateTime(2025, 8, 10), content: 'シャンプー', amount: -530),
       RecordModel(date: DateTime(2025, 8, 15), content: '鬼滅映画', amount: -1300),
       RecordModel(date: DateTime(2025, 8, 15), content: 'ポップコーン', amount: -500),
       RecordModel(date: DateTime(2025, 8, 15), content: '交通費', amount: -500),
-      RecordModel(date: DateTime(2025, 8, 19), content: 'チョコミントアイス', amount: -110),
+      RecordModel(
+          date: DateTime(2025, 8, 19), content: 'チョコミントアイス', amount: -110),
     ];
+    DateFormat formatter = DateFormat(DATE_FORMAT_PATTERN);
     for (var record in newRecords) {
-      int calculatedAmount = state.currentMoney + record.amount;
+      String recordDateString = formatter.format(record.date);
+      debugPrint('dailyAmounts: ${state.dailyAmounts}');
+      Map<String, int> newDailyAmounts = Map<String, int>.from(state.dailyAmounts);
+      newDailyAmounts.update(recordDateString, (value) => value + record.amount,
+          ifAbsent: () => record.amount);
       state = state.copyWith(
-        currentMoney: calculatedAmount,
+        dailyAmounts: newDailyAmounts,
         records: [...state.records, record],
       );
       ref.read(moneyLineChartViewModelProvider.notifier).updateLineChartSpots();

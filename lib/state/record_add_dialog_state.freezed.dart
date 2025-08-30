@@ -15,8 +15,8 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$RecordAddDialogState implements DiagnosticableTreeMixin {
-  bool get isExpenditureMode;
-  String? get content;
+  bool get isExpenditureMode; // 支出と収入のどちらの入力モードになっているか．支出でtrue
+  String? get content; // 購入したものの名前 or 収入の名目
   int? get amount;
 
   /// Create a copy of RecordAddDialogState
@@ -111,8 +111,10 @@ class _RecordAddDialogState
   @override
   @JsonKey()
   final bool isExpenditureMode;
+// 支出と収入のどちらの入力モードになっているか．支出でtrue
   @override
   final String? content;
+// 購入したものの名前 or 収入の名目
   @override
   final int? amount;
 
