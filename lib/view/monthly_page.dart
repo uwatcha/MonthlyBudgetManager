@@ -4,11 +4,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:monthly_budget_manager/model/record_model.dart';
 import 'package:monthly_budget_manager/view/money_line_chart.dart';
 import 'package:monthly_budget_manager/view/record_add_dialog.dart';
-import 'package:monthly_budget_manager/view_model/home_page_view_model.dart';
+import 'package:monthly_budget_manager/view_model/monthly_page_view_model.dart';
 import 'package:monthly_budget_manager/view_model/record_add_dialog_view_model.dart';
 
-class HomePage extends ConsumerWidget {
-  const HomePage({super.key});
+class MonthlyPage extends ConsumerWidget {
+  const MonthlyPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -49,10 +49,10 @@ class HomePage extends ConsumerWidget {
                 height: 200,
                 child: ListView.builder(
                   itemCount:
-                      ref.watch(homePageViewModelProvider).records.length,
+                      ref.watch(monthlyPageViewModelProvider).records.length,
                   itemBuilder: (BuildContext context, int index) {
                     return _recordWidget(ref,
-                        ref.watch(homePageViewModelProvider).records[index]);
+                        ref.watch(monthlyPageViewModelProvider).records[index]);
                   },
                 ),
               ),
@@ -109,7 +109,7 @@ Widget _recordWidget(WidgetRef ref, RecordModel record) {
                   onPressed: () {
                     Navigator.of(context).pop();
                     ref
-                        .read(homePageViewModelProvider.notifier)
+                        .read(monthlyPageViewModelProvider.notifier)
                         .deleteRecord(record.date);
                   },
                   child: _popupMenuButtonLabel(icon: Icons.delete, text: '削除'),

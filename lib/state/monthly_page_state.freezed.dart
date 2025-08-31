@@ -4,7 +4,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'home_page_state.dart';
+part of 'monthly_page_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,25 +14,25 @@ part of 'home_page_state.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$HomePageState implements DiagnosticableTreeMixin {
+mixin _$MonthlyPageState implements DiagnosticableTreeMixin {
   DateTime get startDate;
   DateTime get endDate;
   int get startMoney;
   List<RecordModel> get records; // TODO: セーブ機能作ったらrequiredにしてbuild()で情報を取得する
   Map<String, int> get dailyAmounts;
 
-  /// Create a copy of HomePageState
+  /// Create a copy of MonthlyPageState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $HomePageStateCopyWith<HomePageState> get copyWith =>
-      _$HomePageStateCopyWithImpl<HomePageState>(
-          this as HomePageState, _$identity);
+  $MonthlyPageStateCopyWith<MonthlyPageState> get copyWith =>
+      _$MonthlyPageStateCopyWithImpl<MonthlyPageState>(
+          this as MonthlyPageState, _$identity);
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     properties
-      ..add(DiagnosticsProperty('type', 'HomePageState'))
+      ..add(DiagnosticsProperty('type', 'MonthlyPageState'))
       ..add(DiagnosticsProperty('startDate', startDate))
       ..add(DiagnosticsProperty('endDate', endDate))
       ..add(DiagnosticsProperty('startMoney', startMoney))
@@ -44,7 +44,7 @@ mixin _$HomePageState implements DiagnosticableTreeMixin {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is HomePageState &&
+            other is MonthlyPageState &&
             (identical(other.startDate, startDate) ||
                 other.startDate == startDate) &&
             (identical(other.endDate, endDate) || other.endDate == endDate) &&
@@ -66,15 +66,15 @@ mixin _$HomePageState implements DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'HomePageState(startDate: $startDate, endDate: $endDate, startMoney: $startMoney, records: $records, dailyAmounts: $dailyAmounts)';
+    return 'MonthlyPageState(startDate: $startDate, endDate: $endDate, startMoney: $startMoney, records: $records, dailyAmounts: $dailyAmounts)';
   }
 }
 
 /// @nodoc
-abstract mixin class $HomePageStateCopyWith<$Res> {
-  factory $HomePageStateCopyWith(
-          HomePageState value, $Res Function(HomePageState) _then) =
-      _$HomePageStateCopyWithImpl;
+abstract mixin class $MonthlyPageStateCopyWith<$Res> {
+  factory $MonthlyPageStateCopyWith(
+          MonthlyPageState value, $Res Function(MonthlyPageState) _then) =
+      _$MonthlyPageStateCopyWithImpl;
   @useResult
   $Res call(
       {DateTime startDate,
@@ -85,14 +85,14 @@ abstract mixin class $HomePageStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$HomePageStateCopyWithImpl<$Res>
-    implements $HomePageStateCopyWith<$Res> {
-  _$HomePageStateCopyWithImpl(this._self, this._then);
+class _$MonthlyPageStateCopyWithImpl<$Res>
+    implements $MonthlyPageStateCopyWith<$Res> {
+  _$MonthlyPageStateCopyWithImpl(this._self, this._then);
 
-  final HomePageState _self;
-  final $Res Function(HomePageState) _then;
+  final MonthlyPageState _self;
+  final $Res Function(MonthlyPageState) _then;
 
-  /// Create a copy of HomePageState
+  /// Create a copy of MonthlyPageState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -130,8 +130,10 @@ class _$HomePageStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _HomePageState with DiagnosticableTreeMixin implements HomePageState {
-  const _HomePageState(
+class _MonthlyPageState
+    with DiagnosticableTreeMixin
+    implements MonthlyPageState {
+  const _MonthlyPageState(
       {required this.startDate,
       required this.endDate,
       required this.startMoney,
@@ -166,18 +168,18 @@ class _HomePageState with DiagnosticableTreeMixin implements HomePageState {
     return EqualUnmodifiableMapView(_dailyAmounts);
   }
 
-  /// Create a copy of HomePageState
+  /// Create a copy of MonthlyPageState
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$HomePageStateCopyWith<_HomePageState> get copyWith =>
-      __$HomePageStateCopyWithImpl<_HomePageState>(this, _$identity);
+  _$MonthlyPageStateCopyWith<_MonthlyPageState> get copyWith =>
+      __$MonthlyPageStateCopyWithImpl<_MonthlyPageState>(this, _$identity);
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     properties
-      ..add(DiagnosticsProperty('type', 'HomePageState'))
+      ..add(DiagnosticsProperty('type', 'MonthlyPageState'))
       ..add(DiagnosticsProperty('startDate', startDate))
       ..add(DiagnosticsProperty('endDate', endDate))
       ..add(DiagnosticsProperty('startMoney', startMoney))
@@ -189,7 +191,7 @@ class _HomePageState with DiagnosticableTreeMixin implements HomePageState {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _HomePageState &&
+            other is _MonthlyPageState &&
             (identical(other.startDate, startDate) ||
                 other.startDate == startDate) &&
             (identical(other.endDate, endDate) || other.endDate == endDate) &&
@@ -211,16 +213,16 @@ class _HomePageState with DiagnosticableTreeMixin implements HomePageState {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'HomePageState(startDate: $startDate, endDate: $endDate, startMoney: $startMoney, records: $records, dailyAmounts: $dailyAmounts)';
+    return 'MonthlyPageState(startDate: $startDate, endDate: $endDate, startMoney: $startMoney, records: $records, dailyAmounts: $dailyAmounts)';
   }
 }
 
 /// @nodoc
-abstract mixin class _$HomePageStateCopyWith<$Res>
-    implements $HomePageStateCopyWith<$Res> {
-  factory _$HomePageStateCopyWith(
-          _HomePageState value, $Res Function(_HomePageState) _then) =
-      __$HomePageStateCopyWithImpl;
+abstract mixin class _$MonthlyPageStateCopyWith<$Res>
+    implements $MonthlyPageStateCopyWith<$Res> {
+  factory _$MonthlyPageStateCopyWith(
+          _MonthlyPageState value, $Res Function(_MonthlyPageState) _then) =
+      __$MonthlyPageStateCopyWithImpl;
   @override
   @useResult
   $Res call(
@@ -232,14 +234,14 @@ abstract mixin class _$HomePageStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$HomePageStateCopyWithImpl<$Res>
-    implements _$HomePageStateCopyWith<$Res> {
-  __$HomePageStateCopyWithImpl(this._self, this._then);
+class __$MonthlyPageStateCopyWithImpl<$Res>
+    implements _$MonthlyPageStateCopyWith<$Res> {
+  __$MonthlyPageStateCopyWithImpl(this._self, this._then);
 
-  final _HomePageState _self;
-  final $Res Function(_HomePageState) _then;
+  final _MonthlyPageState _self;
+  final $Res Function(_MonthlyPageState) _then;
 
-  /// Create a copy of HomePageState
+  /// Create a copy of MonthlyPageState
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -250,7 +252,7 @@ class __$HomePageStateCopyWithImpl<$Res>
     Object? records = null,
     Object? dailyAmounts = null,
   }) {
-    return _then(_HomePageState(
+    return _then(_MonthlyPageState(
       startDate: null == startDate
           ? _self.startDate
           : startDate // ignore: cast_nullable_to_non_nullable

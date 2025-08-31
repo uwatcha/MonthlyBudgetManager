@@ -1,26 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'home_page_view_model.dart';
+part of 'monthly_page_view_model.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$homePageViewModelHash() => r'a87f78eeb361c13e6686208e9f8467de3677bf7a';
+String _$monthlyPageViewModelHash() =>
+    r'e1d615ab5510963794d278ac92171c9b02235068';
 
-/// See also [HomePageViewModel].
-@ProviderFor(HomePageViewModel)
-final homePageViewModelProvider =
-    NotifierProvider<HomePageViewModel, HomePageState>.internal(
-  HomePageViewModel.new,
-  name: r'homePageViewModelProvider',
+/// See also [MonthlyPageViewModel].
+@ProviderFor(MonthlyPageViewModel)
+final monthlyPageViewModelProvider =
+    NotifierProvider<MonthlyPageViewModel, MonthlyPageState>.internal(
+  MonthlyPageViewModel.new,
+  name: r'monthlyPageViewModelProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$homePageViewModelHash,
+      : _$monthlyPageViewModelHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$HomePageViewModel = Notifier<HomePageState>;
+typedef _$MonthlyPageViewModel = Notifier<MonthlyPageState>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:monthly_budget_manager/view_model/home_page_view_model.dart';
+import 'package:monthly_budget_manager/view_model/monthly_page_view_model.dart';
 import 'package:monthly_budget_manager/view_model/record_add_dialog_view_model.dart';
 
 class RecordAddDialog extends ConsumerWidget {
@@ -57,8 +57,8 @@ class RecordAddDialog extends ConsumerWidget {
               children: [
                 TextButton(
                   onPressed: () {
-                    HomePageViewModel homePageViewModel =
-                        ref.read(homePageViewModelProvider.notifier);
+                    MonthlyPageViewModel homePageViewModel =
+                        ref.read(monthlyPageViewModelProvider.notifier);
                     homePageViewModel.addDummyRecords();
                   },
                   child: Text('デモデータ追加'),
@@ -68,7 +68,7 @@ class RecordAddDialog extends ConsumerWidget {
                   child: TextButton(
                     onPressed: () {
                       bool isSucceeded = ref
-                          .read(homePageViewModelProvider.notifier)
+                          .read(monthlyPageViewModelProvider.notifier)
                           .addRecord(
                               ref.watch(recordAddDialogViewModelProvider));
                       if (isSucceeded) Navigator.pop(context);

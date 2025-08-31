@@ -2,9 +2,9 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:monthly_budget_manager/constant/constant.dart';
-import 'package:monthly_budget_manager/state/home_page_state.dart';
+import 'package:monthly_budget_manager/state/monthly_page_state.dart';
 import 'package:monthly_budget_manager/state/money_line_chart_state.dart';
-import 'package:monthly_budget_manager/view_model/home_page_view_model.dart';
+import 'package:monthly_budget_manager/view_model/monthly_page_view_model.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'money_line_chart_view_model.g.dart';
@@ -17,13 +17,13 @@ class MoneyLineChartViewModel extends _$MoneyLineChartViewModel {
   }
 
   Widget getLeftTitleWidget(double value, TitleMeta meta) {
-    final DateTime startDate = ref.watch(homePageViewModelProvider).startDate;
+    final DateTime startDate = ref.watch(monthlyPageViewModelProvider).startDate;
     final DateTime currentDate = startDate.add(Duration(days: value.toInt()));
     return Text('${currentDate.month}/${currentDate.day}');
   }
 
   void updateLineChartSpots() {
-    HomePageState homePageState = ref.watch(homePageViewModelProvider);
+    MonthlyPageState homePageState = ref.watch(monthlyPageViewModelProvider);
     final DateFormat formatter = DateFormat(DATE_FORMAT_PATTERN);
     double lastSpotY = homePageState.startMoney.toDouble();
     List<FlSpot> newSpots = homePageState.dailyAmounts.entries.map<FlSpot>(

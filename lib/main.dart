@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:monthly_budget_manager/view/home_page.dart';
+import 'package:monthly_budget_manager/view/monthly_page.dart';
 
 void main() {
   runApp(const ProviderScope(child: MonthlyBudgetManager()));
@@ -16,7 +16,7 @@ class MonthlyBudgetManager extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomePage(),
+      home: MonthlyPage(),
     );
   }
 }

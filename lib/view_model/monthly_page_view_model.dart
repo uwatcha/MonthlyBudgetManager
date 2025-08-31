@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:monthly_budget_manager/constant/constant.dart';
 import 'package:monthly_budget_manager/model/record_model.dart';
-import 'package:monthly_budget_manager/state/home_page_state.dart';
+import 'package:monthly_budget_manager/state/monthly_page_state.dart';
 import 'package:monthly_budget_manager/state/record_add_dialog_state.dart';
 import 'package:monthly_budget_manager/view_model/money_line_chart_view_model.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'home_page_view_model.g.dart';
+part 'monthly_page_view_model.g.dart';
 
 @Riverpod(keepAlive: true)
-class HomePageViewModel extends _$HomePageViewModel {
+class MonthlyPageViewModel extends _$MonthlyPageViewModel {
   @override
-  HomePageState build() {
-    return HomePageState(
+  MonthlyPageState build() {
+    return MonthlyPageState(
       //TODO: これらのデータを前の画面で入力してから遷移するようにする
       startDate: DateTime(2025, 7, 20),
       endDate: DateTime(2025, 8, 20),

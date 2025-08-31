@@ -7,7 +7,7 @@ part of 'money_line_chart_view_model.dart';
 // **************************************************************************
 
 String _$moneyLineChartViewModelHash() =>
-    r'3a80b7395ea7708c3b4f9330d05115f72093c7e0';
+    r'636f41c2aea5814121f87957a3dfaed16d408e9d';
 
 /// See also [MoneyLineChartViewModel].
 @ProviderFor(MoneyLineChartViewModel)
