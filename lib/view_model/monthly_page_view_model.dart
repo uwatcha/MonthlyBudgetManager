@@ -67,6 +67,10 @@ class MonthlyPageViewModel extends _$MonthlyPageViewModel {
     ref.read(moneyLineChartViewModelProvider.notifier).updateLineChartSpots();
   }
 
+  void changeMonth(int id) {
+    // 指定されたidで本給料テーブルを検索し，その月のデータをstateにセットする
+  }
+//----------------------------------------------------------------------------------------
   void addDummyRecords() {
     List<RecordModel> newRecords = [
       RecordModel(date: DateTime(2025, 7, 20), content: 'りんご', amount: -200),

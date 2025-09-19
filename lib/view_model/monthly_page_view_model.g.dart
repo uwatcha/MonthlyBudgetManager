@@ -7,7 +7,7 @@ part of 'monthly_page_view_model.dart';
 // **************************************************************************
 
 String _$monthlyPageViewModelHash() =>
-    r'e1d615ab5510963794d278ac92171c9b02235068';
+    r'c2001085e97fe74d68128e0e7aab7491db14d350';
 
 /// See also [MonthlyPageViewModel].
 @ProviderFor(MonthlyPageViewModel)

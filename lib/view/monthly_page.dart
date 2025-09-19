@@ -14,7 +14,7 @@ class MonthlyPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('生活費管理'),
+        title: _monthSwitchWidget(),
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -85,6 +85,18 @@ class MonthlyPage extends ConsumerWidget {
 //TODO: 実際のグラフとこのペースだと仮定した予測グラフを表示する
 //TODO: 予算がオーバーする = currentMoneyが-になることを想定する
 
+/// 月切り替えバー
+Widget _monthSwitchWidget() {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back_ios)),
+      Text('2024年5月'),
+      IconButton(onPressed: () {}, icon: Icon(Icons.arrow_forward_ios)),
+    ],
+  );
+}
+
 /// 履歴表示
 Widget _recordWidget(WidgetRef ref, RecordModel record) {
   return Container(
@@ -135,7 +147,7 @@ Widget _popupMenuButtonLabel({required IconData icon, required text}) {
 /// 履歴表示ウィジェットの日付部分
 Widget _dateDisplayWidget(DateTime date) {
   return Container(
-    width: 80, 
+    width: 80,
     height: 80,
     color: Colors.blue.withOpacity(0.1), // 領域を確認するための色
     child: Stack(

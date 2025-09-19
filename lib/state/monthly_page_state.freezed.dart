@@ -19,6 +19,9 @@ mixin _$MonthlyPageState implements DiagnosticableTreeMixin {
   DateTime get endDate;
   int get startMoney;
   List<RecordModel> get records; // TODO: セーブ機能作ったらrequiredにしてbuild()で情報を取得する
+  /// 1日ごとに収支を管理し，グラフに渡す
+  /// キーは日付（'yyyy-MM-dd'形式の文字列）
+  /// 値はその日の収支合計
   Map<String, int> get dailyAmounts;
 
   /// Create a copy of MonthlyPageState
@@ -158,8 +161,14 @@ class _MonthlyPageState
   }
 
 // TODO: セーブ機能作ったらrequiredにしてbuild()で情報を取得する
+  /// 1日ごとに収支を管理し，グラフに渡す
+  /// キーは日付（'yyyy-MM-dd'形式の文字列）
+  /// 値はその日の収支合計
   final Map<String, int> _dailyAmounts;
 // TODO: セーブ機能作ったらrequiredにしてbuild()で情報を取得する
+  /// 1日ごとに収支を管理し，グラフに渡す
+  /// キーは日付（'yyyy-MM-dd'形式の文字列）
+  /// 値はその日の収支合計
   @override
   @JsonKey()
   Map<String, int> get dailyAmounts {
